@@ -1,0 +1,38 @@
+@use './variables' as *;
+
+.btn {
+  font-family: $font-condensed;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+
+  &--primary {
+    background: $gold;
+    color: $black;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+
+    &:hover {
+      background: $gold-dark;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba($gold, 0.3);
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: $white;
+    border: 1px solid rgba($white, 0.3);
+
+    &:hover {
+      border-color: $gold;
+      color: $gold;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@use './styles/variables' as *;
+@use './styles/buttons';
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap');
+
+
+
+:root {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --gold: #F5C518;
+  --black: #0a0a0a;
+  --white: #f0ece0;
+  
+  
+}
+
+a {
+ 
+  text-decoration: inherit;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: $font-body;
+  background: $black;
+  color: $white;
+  overflow-x: hidden;
+}

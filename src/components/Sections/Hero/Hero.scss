@@ -1,0 +1,133 @@
+@use '../../../styles/variables' as *;
+
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+
+  overflow: hidden;
+  /* Reemplaza la URL por tu imagen local en /public o /assets */
+  background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(245, 197, 24, 0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(245, 197, 24, 0.05) 0%, transparent 60%), linear-gradient(160deg, #0f0f0f 0%, #0a0a0a 100%);
+
+   // Línea diagonal decorativa
+    &::after {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: 15%;
+      width: 2px;
+      height: 130%;
+      background: linear-gradient(to bottom, transparent, $gold, transparent);
+      //background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      opacity: 0.3;
+      transform: rotate(12deg);
+    }
+}
+
+.hero-watermark {
+    position: absolute;
+    bottom: -5%;
+    right: 0px;
+    font-family: 'Bebas Neue', Impact,'Arial Narrow Bold', sans-serif;
+    font-size: clamp(8rem, 20vw, 18rem);
+    color: rgba(245, 197, 24, 0.04);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+
+
+
+
+
+.container-hero {
+  margin-top: 110px;
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 5%;
+
+  // Stagger animations on mount
+  .--visible {
+    .hero__tag     { animation: fadeUp 0.8s 0.2s forwards; }
+    .hero__logo    { animation: fadeUp 0.8s 0.35s forwards; }
+    .hero__sub     { animation: fadeUp 0.8s 0.5s forwards; }
+    .hero__slogan  { animation: fadeUp 0.8s 0.65s forwards; }
+    .hero__actions { animation: fadeUp 0.8s 0.8s forwards; }
+  }
+  
+  // ── Contenido ─────────────────────────────────────────────
+
+  .hero__info {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    text-align: center;
+
+    .hero__tag {
+      font-family: $font-condensed;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba($gold, 0.2);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+    }
+    .hero__logo {
+      opacity: 0;
+      svg {
+        width: 500px;
+        
+      }
+    }
+    .hero__sub {
+    font-family: $font-condensed;
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $gray;
+    margin-bottom: 1.2rem;
+    opacity: 0;
+  }
+
+  .hero__slogan {
+    font-family: $font-body;
+    font-weight: 300;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: rgba($white, 0.75);
+    margin-bottom: 2.8rem;
+    opacity: 0;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+  }
+
+
+  }
+
+}
+
+
+// ── Animación ─────────────────────────────────────────────
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

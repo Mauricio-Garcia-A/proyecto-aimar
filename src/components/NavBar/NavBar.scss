@@ -1,0 +1,272 @@
+// Tamaño min adaptable (activa responsive)
+// $widthResponsive: 700px;
+$widthResponsive: 1270px;
+$bg-color-nav-1: linear-gradient(122deg, #f65625 80%, rgba(255, 255, 255, 0) 80%);
+$bg-color-nav-2: linear-gradient(122deg, #ffffff00 20%, rgba(33, 32, 32, 0.822) 20%);
+$bg-color-nav-3: rgba(33, 32, 32, 0.822);
+
+// ---- ESTILOS COMPONENTE BARRA DE NAVEGACION ----
+.container-Navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 5%;
+  background: linear-gradient(to bottom, rgba(245, 197, 24, 0.184), transparent);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+// Contenedor LOGO
+.container-logo {
+  height: 70px;
+  width: 100px;
+  fill: var(--gold);
+  filter: drop-shadow(0 0 12px rgba(84, 26, 1, 0.51));
+
+  svg {
+    margin-right: 80px;
+    margin-left: 10px;
+  }
+}
+
+// Contenedor Opcines del menu (links + Datos Contactos)
+.container-menu-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 100%;
+  width: 80%;
+
+  z-index: 9;
+
+  @media (max-width:$widthResponsive) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: absolute;
+    right: 0;
+    top: 108px;
+    z-index: 9;
+
+    background: linear-gradient(to bottom, rgba(245, 197, 24, 0.184), transparent);
+
+    backdrop-filter: blur(10px);
+    border-left: 2px solid rgba(0, 0, 0, 0.484);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.482);
+    //border-top: 2px solid rgba(217, 148, 0, 0.836);
+
+    border-radius: 0px 0px 0px 10px;
+
+    width: 350px;
+    height: 500px;
+
+    overflow: hidden;
+    transition: 1s ease all;
+
+    &.menu-desactivo {
+      height: 0px;
+      padding: 0;
+      border: 0;
+      opacity: 0.4;
+
+      .link-navbar {
+        visibility: hidden;
+      }
+    }
+
+  }
+}
+
+// Contenedor links 
+.container-list-links {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .container-link-navbar {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    text-transform: uppercase;
+  }
+  @media (max-width:$widthResponsive) {
+    .container-link-navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 5px;
+
+    flex-direction: column;
+    }
+
+  }
+}
+.container-link-navbar {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  text-transform: uppercase;
+
+  @media (max-width:$widthResponsive) {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 5px;
+
+    flex-direction: column;
+
+  }
+}
+
+// Contenedor Datos de Contacto
+.container-contact-navbar {
+  padding-right: 20px;
+  margin: 0;
+
+  button {
+    font-family: var(--barlow-cond);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 0.6rem 1.6rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  button:hover {
+    background: var(--gold-dark);
+    transform: translateY(-1px);
+  }
+
+
+  @media (max-width:$widthResponsive) {
+    background: $bg-color-nav-3;
+    width: 100%;
+
+  
+  }
+
+}
+
+
+// Estilos boton link del NAV
+.link-navbar {
+  display: flex;
+  gap: 2rem;
+
+  list-style: none;
+
+  a {
+
+    font-family: var(--barlow-cond);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+
+
+    &:hover {
+      color: rgb(147, 0, 0, 0.749);
+    }
+
+    &:active {
+      color: rgba(200, 0, 0);
+    }
+
+    &.active {
+      color: rgb(0, 0, 0);
+    }
+  }
+
+
+  @media (max-width:$widthResponsive) {
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid rgba(150, 0, 0, 0);
+
+
+    &:hover {
+      color: rgb(147, 0, 0);
+      border: 3px solid rgba(150, 0, 0, 0.512);
+    }
+
+    &:active {
+      color: rgba(200, 0, 0, 0.749);
+      border: 3px solid rgba(200, 0, 0, 0.748);
+    }
+
+    &.active {
+      background: rgba(255, 0, 0, 0.073);
+      color: rgb(175, 0, 0);
+      border: 3px solid rgb(175, 0, 0);
+    }
+  }
+}
+
+
+// Contenedor Boton Desplegable
+.container-button-dropdown {
+  display: none;
+  border: 2px solid rgba(209, 137, 12, 0.404);
+  border-radius: 10px;
+  margin-right: 20px;
+
+
+  @media (max-width:$widthResponsive) {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+}
+
+
+
+
+
+.nav-container {}
+
+.nav-logo svg {}
+
+.nav-links {}
+
+.nav-links a {}
+
+.nav-links a:hover {}
+
+.nav-cta {
+  font-family: var(--barlow-cond);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  padding: 0.6rem 1.6rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.nav-cta:hover {
+  background: var(--gold-dark);
+  transform: translateY(-1px);
+}
