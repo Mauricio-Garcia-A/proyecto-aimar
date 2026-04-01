@@ -62,14 +62,15 @@ const Contact = () => (
       </ul>
 
       <div className="contact__cta">
+        <img src='./images/ejemplomap.png' />
         <p className="contact__cta-heading">¿Ya sos alumno?</p>
         <p className="contact__cta-text">
           Accedé a tu cuenta para ver tus rutinas y registrar
           tus entrenamientos diarios.
         </p>
-        <button className="btn btn--primary">
-          Ingresar a mi cuenta
-        </button>
+        <div className="btn btn--primary">
+          Av. 1 Nº 1362 esq. 60, La Plata
+        </div>
       </div>
 
     </div>
