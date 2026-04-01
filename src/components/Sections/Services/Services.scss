@@ -1,0 +1,121 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.services {
+  background: $dark;
+  padding: 7rem 5%;
+  position: relative;
+
+  // Línea dorada superior
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, $gold, transparent);
+  }
+
+  // ── Header ────────────────────────────────────────────
+  &__header {
+    margin-bottom: 4rem;
+  }
+
+  &__label {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: $gold;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: $white;
+  }
+
+  // ── Grid ──────────────────────────────────────────────
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5px;
+    background: rgba($gold, 0.1);
+  }
+
+  // ── Card ──────────────────────────────────────────────
+  &__card {
+    background: $dark;
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition:
+      background 0.3s ease,
+      opacity 0.6s ease,
+      transform 0.6s ease;
+
+    // Animación de entrada (scroll reveal)
+    opacity: 0;
+    transform: translateY(28px);
+
+    &--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &:hover {
+      background: $dark2;
+    }
+
+    // Línea dorada inferior al hover
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $gold;
+      transition: width 0.4s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  &__card-icon {
+    display: block;
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__card-name {
+    font-family: $font-display;
+    font-size: 1.9rem;
+    letter-spacing: 0.05em;
+    color: $gold;
+    margin-bottom: 0.8rem;
+  }
+
+  &__card-desc {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: $gray;
+  }
+
+  // ── Responsive ────────────────────────────────────────
+  @media (max-width: 600px) {
+    padding: 5rem 6%;
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

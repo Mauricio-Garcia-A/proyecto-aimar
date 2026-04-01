@@ -1,29 +1,37 @@
-import FooterSection from '../../components/FooterSection/FooterSection'
+import { useState } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
-import SectionEstandar from '../../components/SectionEstandar/SectionEstandar'
+import AboutUs from '../../components/Sections/AboutUs/AboutUs'
+import Contact from '../../components/Sections/Contact/Contact'
+import Footer from '../../components/Sections/Footer/Footer'
 import Hero from '../../components/Sections/Hero/hero'
+import Services from '../../components/Sections/Services/Services'
+import Stats from '../../components/Sections/Stars/Stars'
+import Ticker from '../../components/Sections/Ticker/Ticker'
+import LoginModal from '../../components/Sections/LoginModal/LoginModal'
 import './Home.scss'
 
 export default function Home() {
+  const [loginOpen, setLoginOpen] = useState(false)
+
   return (
     <div>
       <header>
-        <NavBar />
+        <NavBar onLoginClick={() => setLoginOpen(true)} />
       </header>
       <main>
         <Hero />
-        <SectionEstandar id="section-presentation" bg='#2229'>
-          Seccion 1
-        </SectionEstandar>
-        <SectionEstandar id="section-presentation" bg='#8339'>
-          Seccion 2
-        </SectionEstandar>
-        <SectionEstandar id="section-presentation" bg='#f405'>
-          Seccion 3
-        </SectionEstandar>
+        <Ticker />
+        <AboutUs />
+        <Stats />
+        <Services />
+        <Contact />
+        <LoginModal
+          isOpen={loginOpen}
+          onClose={() => setLoginOpen(false)}
+        />
       </main>
       <footer>
-        <FooterSection />
+       <Footer />
       </footer>
       
       

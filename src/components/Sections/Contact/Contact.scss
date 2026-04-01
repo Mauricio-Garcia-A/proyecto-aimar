@@ -1,0 +1,135 @@
+@use '../../../styles/variables' as *;
+
+.contact {
+  background: $black;
+  padding: 7rem 5%;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, $gold, transparent);
+  }
+
+  // ── Header ────────────────────────────────────────────
+  &__header {
+    margin-bottom: 4rem;
+  }
+
+  &__label {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: $gold;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: $white;
+  }
+
+  // ── Grid ──────────────────────────────────────────────
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  // ── List ──────────────────────────────────────────────
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  &__icon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    background: rgba($gold, 0.08);
+    border: 1px solid rgba($gold, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &__info-label {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: $gold;
+  }
+
+  &__info-value {
+    font-family: $font-body;
+    font-size: 1rem;
+    color: $white;
+
+    &--link {
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $gold;
+      }
+    }
+  }
+
+  // ── CTA ───────────────────────────────────────────────
+  &__cta {
+    background: $dark2;
+    border: 1px solid rgba($gold, 0.15);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  &__cta-heading {
+    font-family: $font-display;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+    color: $gold;
+  }
+
+  &__cta-text {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: $gray;
+  }
+
+  // ── Responsive ────────────────────────────────────────
+  @media (max-width: 768px) {
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+}

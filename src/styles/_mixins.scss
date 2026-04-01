@@ -1,0 +1,43 @@
+@use './variables' as *;
+
+// Línea decorativa dorada horizontal
+@mixin gold-line-top {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, $gold, transparent);
+  }
+}
+
+// Texto label de sección
+@mixin section-label {
+  font-family: $font-condensed;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: $gold;
+}
+
+// Título de sección
+@mixin section-title {
+  font-family: $font-display;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: $white;
+}
+
+// Scroll reveal base
+@mixin reveal-base {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

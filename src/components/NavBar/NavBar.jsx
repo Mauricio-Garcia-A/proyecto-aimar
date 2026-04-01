@@ -1,7 +1,7 @@
 import './NavBar.scss'
 import Logo from '../Logos/LogoSinRotulo'
 import ButtonDropdown from './ButtonDropdown/ButtonDropdown'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IconInstagram, IconLocation, IconWhatsapp } from '../Icons/Icons'
 
 const options = [
@@ -23,11 +23,23 @@ const options = [
 
 
 
-export default function NavBar() {
+export default function NavBar({ onLoginClick }) {
     const [menuDesplegado, setMenuDesplegado] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false)
     const handleClick = () => {
         setMenuDesplegado(!menuDesplegado)
     }
+
+
+      // Cerrar menú mobile al hacer click en un link
+  const handleLinkClick = () => setMenuOpen(false)
+
+  // Bloquear scroll cuando el menú mobile está abierto
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
 
     return (
         <nav className='container-Navbar'>
@@ -47,7 +59,7 @@ export default function NavBar() {
                 </section>
                 
                 <section className='container-contact-navbar'>
-                 <button>INGRESAR</button>
+                 <button onClick={() => { handleLinkClick(); onLoginClick() }}>INGRESAR</button>
 
                 </section>
 

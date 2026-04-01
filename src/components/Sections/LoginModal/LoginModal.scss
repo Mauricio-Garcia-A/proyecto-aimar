@@ -1,0 +1,153 @@
+@use '../../../styles/variables' as *;
+
+// ── Overlay ───────────────────────────────────────────────
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: overlayIn 0.25s ease forwards;
+}
+
+// ── Modal ─────────────────────────────────────────────────
+.modal {
+  background: $dark;
+  border: 1px solid rgba($gold, 0.2);
+  width: 100%;
+  max-width: 420px;
+  padding: 3rem;
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+  animation: modalIn 0.3s ease forwards;
+
+  // ── Close ───────────────────────────────────────────
+  &__close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    color: $gray;
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+
+    &:hover { color: $gold; }
+  }
+
+  // ── Header ──────────────────────────────────────────
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__logo {
+    height: 44px;
+    width: auto;
+    margin-bottom: 0.5rem;
+  }
+
+  &__subtitle {
+    font-family: $font-condensed;
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: $gray;
+  }
+
+  // ── Tabs ────────────────────────────────────────────
+  &__tabs {
+    display: flex;
+    border-bottom: 1px solid rgba($gold, 0.15);
+    margin-bottom: 2rem;
+  }
+
+  &__tab {
+    font-family: $font-condensed;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: $gray;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+
+    &:hover { color: $white; }
+
+    &--active {
+      color: $gold;
+      border-bottom-color: $gold;
+    }
+  }
+
+  // ── Form ────────────────────────────────────────────
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__label {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $gray;
+  }
+
+  &__input {
+    background: rgba($white, 0.04);
+    border: 1px solid rgba($gold, 0.15);
+    color: $white;
+    font-family: $font-body;
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+
+    &::placeholder { color: rgba($gray, 0.5); }
+    &:focus { border-color: $gold; }
+  }
+
+  &__submit {
+    width: 100%;
+    margin-top: 0.25rem;
+    justify-content: center;
+  }
+}
+
+// ── Animations ────────────────────────────────────────────
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

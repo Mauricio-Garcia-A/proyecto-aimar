@@ -1,0 +1,122 @@
+@use '../../../styles/variables' as *;
+
+.about {
+  background: $dark;
+  padding: 7rem 5%;
+  //display: grid;
+  //grid-template-columns: 1fr 1fr;
+  //gap: 6rem;
+  //align-items: center;
+  position: relative;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .image-bg {
+    opacity: 0.1;
+    position: absolute;
+    bottom: 0;
+    height: 80hv;
+    left: 10vw;
+  
+  }
+
+  // ── Visual ────────────────────────────────────────────
+  &__visual {
+    position: relative;
+    height: 440px;
+  }
+
+  &__visual-main {
+    position: absolute;
+    inset: 0;
+    background: $dark2;
+    border: 1px solid rgba($gold, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__visual-watermark {
+    font-family: $font-display;
+    font-size: clamp(5rem, 10vw, 8rem);
+    color: rgba($gold, 0.06);
+    letter-spacing: 0.15em;
+    user-select: none;
+  }
+
+  &__visual-accent {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    width: 52%;
+    height: 38%;
+    background: $gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  &__visual-accent-text {
+    font-family: $font-display;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    color: $black;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  // ── Content ───────────────────────────────────────────
+  &__content {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__label {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: $gold;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: $white;
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    font-family: $font-body;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba($white, 0.65);
+    margin-bottom: 1.5rem;
+  }
+
+  // ── Responsive ────────────────────────────────────────
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    &__visual {
+      height: 300px;
+    }
+
+    &__visual-accent {
+      bottom: -1rem;
+      right: -1rem;
+    }
+  }
+}
