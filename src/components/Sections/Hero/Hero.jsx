@@ -20,7 +20,7 @@ export default function Hero() {
           <div className="hero__info" ref={heroRef}>
             <p className="hero__tag">La Plata · Buenos Aires · Argentina</p>
             <div className='hero__logo'><Logo /></div>
-            <p className="hero__sub">Musculación · Fitness · Spinning</p>
+            <p className="hero__sub">Musculación · Fitness · Funcional</p>
             <br /><br /><br />
             <p className="hero__slogan">"Si hay determinación, no hay límites."</p>
 

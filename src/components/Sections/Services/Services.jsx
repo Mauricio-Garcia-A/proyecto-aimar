@@ -9,8 +9,8 @@ const SERVICES = [
   },
   {
     icon: '🚴',
-    name: 'Spinning',
-    desc: 'Clases de ciclismo indoor de alta intensidad. Quemá calorías y mejorá tu resistencia cardiovascular.',
+    name: 'Funcional',
+    desc: 'Clases de Funcional de alta/media intensidad. Quemá calorías y mejorá tu resistencia cardiovascular.',
   },
   {
     icon: '💪',
