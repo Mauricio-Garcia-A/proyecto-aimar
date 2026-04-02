@@ -9,6 +9,7 @@ import Stats from '../../components/Sections/Stars/Stars'
 import Ticker from '../../components/Sections/Ticker/Ticker'
 import LoginModal from '../../components/Sections/LoginModal/LoginModal'
 import './Home.scss'
+import Staff from '../../components/Sections/Staff/Staff'
 
 export default function Home() {
   const [loginOpen, setLoginOpen] = useState(false)
@@ -24,6 +25,7 @@ export default function Home() {
         <AboutUs />
         <Stats />
         <Services />
+        <Staff />
         <Contact />
         <LoginModal
           isOpen={loginOpen}

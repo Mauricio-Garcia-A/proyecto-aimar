@@ -1,0 +1,246 @@
+@use '../../../styles/variables' as *;
+
+.staff {
+  background: $dark;
+  padding: 7rem 5%;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, $gold, transparent);
+  }
+
+  // ── Header ────────────────────────────────────────────
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+
+  &__label {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: $gold;
+    margin-bottom: 0.8rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    line-height: 1;
+    color: $white;
+  }
+
+  // ── Controls ──────────────────────────────────────────
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 6px;
+  }
+
+  &__arrow,
+  &__pause {
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid rgba($gold, 0.3);
+    color: $gold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+
+    &:hover {
+      background: rgba($gold, 0.1);
+      border-color: $gold;
+    }
+  }
+
+  &__pause--paused {
+    background: rgba($gold, 0.12);
+    border-color: $gold;
+  }
+
+  &__sep {
+    width: 1px;
+    height: 26px;
+    background: rgba($gold, 0.15);
+  }
+
+  // ── Carousel ──────────────────────────────────────────
+  &__wrap {
+    overflow: hidden;
+    cursor: grab;
+    &:active { cursor: grabbing; }
+  }
+
+  &__track {
+    display: flex;
+    gap: 8px;
+    will-change: transform;
+  }
+
+  // ── Card ──────────────────────────────────────────────
+  &__card {
+    flex: 0 0 calc(100% / var(--visible, 5) - 7px);
+    background: $black;
+    border: 1px solid rgba($gold, 0.06);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.45;
+    transform: scale(0.94);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease,
+      background 0.3s ease,
+      border-color 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: $gold;
+      transition: width 0.4s ease;
+    }
+
+    &--active {
+      opacity: 1;
+      transform: scale(1);
+      border-color: rgba($gold, 0.2);
+
+      &::after { width: 100%; }
+    }
+
+    &:hover:not(&--active) {
+      opacity: 0.7;
+    }
+  }
+
+  // ── Photo ─────────────────────────────────────────────
+  &__photo {
+    width: 100%;
+    aspect-ratio: 3 / 3.5;
+    background: $dark2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    &[data-alt='true'] { background: #161616; }
+  }
+
+  &__initials {
+    font-family: $font-display;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: rgba($gold, 0.1);
+    letter-spacing: 2px;
+    user-select: none;
+  }
+
+  &__overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 55%;
+    background: linear-gradient(to top, rgba($dark, 0.95), transparent);
+  }
+
+  // ── Info ──────────────────────────────────────────────
+  &__info {
+    padding: 1rem 1.1rem 1.3rem;
+  }
+
+  &__name {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: $white;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__role {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $gold;
+  }
+
+  &__spec {
+    font-family: $font-body;
+    font-size: 0.78rem;
+    color: $gray;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+
+  // ── Dots ──────────────────────────────────────────────
+  &__dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+  &__dot {
+    width: 24px;
+    height: 2px;
+    background: rgba($gold, 0.18);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, width 0.3s;
+
+    &--active {
+      background: $gold;
+      width: 36px;
+    }
+  }
+
+  // ── Progress bar ──────────────────────────────────────
+  &__progress-bar {
+    height: 2px;
+    background: rgba($gold, 0.08);
+    margin-top: 10px;
+    overflow: hidden;
+  }
+
+  &__progress {
+    height: 100%;
+    background: $gold;
+    width: 0%;
+
+    &--paused {
+      background: rgba($gold, 0.3);
+    }
+  }
+
+  // ── Responsive ────────────────────────────────────────
+  @media (max-width: 1024px) {
+    .staff__card { flex-basis: calc(100% / 3 - 6px); }
+  }
+
+  @media (max-width: 640px) {
+    padding: 5rem 6%;
+
+    &__header { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+    &__card { flex-basis: calc(100% - 0px); }
+  }
+}
