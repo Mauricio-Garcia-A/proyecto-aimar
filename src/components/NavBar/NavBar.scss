@@ -6,6 +6,7 @@ $bg-color-nav-2: linear-gradient(122deg, #ffffff00 20%, rgba(33, 32, 32, 0.822) 
 $bg-color-nav-3: rgba(33, 32, 32, 0.822);
 
 // ---- ESTILOS COMPONENTE BARRA DE NAVEGACION ----
+
 .container-Navbar {
   position: fixed;
   top: 0;
@@ -16,26 +17,41 @@ $bg-color-nav-3: rgba(33, 32, 32, 0.822);
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 5%;
-  background: linear-gradient(to bottom, rgba(245, 197, 24, 0.184), transparent);
-  backdrop-filter: blur(10px);
+  
 
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
 
+  .bg-blur {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(245, 197, 24, 0.184), transparent);
+    backdrop-filter: blur(10px);
+    left: 0;
+    top: 0;
+  }
 }
 
 // Contenedor LOGO
 .container-logo {
-  height: 70px;
   width: 100px;
   fill: var(--gold);
-  filter: drop-shadow(0 0 12px rgba(84, 26, 1, 0.51));
+  
 
   svg {
     margin-right: 80px;
     margin-left: 10px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 12px rgba(201, 101, 0, 0.356));
+    transition: 1s ease all;
+
+    &:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 12px rgba(201, 100, 0, 0.836));
+    }
   }
 }
 
@@ -57,24 +73,30 @@ $bg-color-nav-3: rgba(33, 32, 32, 0.822);
     justify-content: start;
     position: absolute;
     right: 0;
-    top: 108px;
+    top: 100px;
     z-index: 9;
 
-    background: linear-gradient(to bottom, rgba(245, 197, 24, 0.184), transparent);
+    //background: linear-gradient(to bottom, rgba(245, 197, 24, 0.184), transparent);
 
-    backdrop-filter: blur(10px);
-    border-left: 2px solid rgba(0, 0, 0, 0.484);
+    //backdrop-filter: blur(10px);
+    //border-left: 2px solid rgba(0, 0, 0, 0.484);
     border-bottom: 2px solid rgba(0, 0, 0, 0.482);
     //border-top: 2px solid rgba(217, 148, 0, 0.836);
 
     border-radius: 0px 0px 0px 10px;
 
-    width: 350px;
-    height: 500px;
+    width: 300px;
+    height: 400px;
+    
 
     overflow: hidden;
     transition: 1s ease all;
 
+    &.menu-activo{
+      //background: linear-gradient(to bottom, transparent, rgba(245, 197, 24, 0.184));
+         background: linear-gradient(to bottom,transparent, rgba(245, 197, 24, 0.184) );
+        backdrop-filter: blur(10px);
+    }
     &.menu-desactivo {
       height: 0px;
       padding: 0;
@@ -146,17 +168,24 @@ $bg-color-nav-3: rgba(33, 32, 32, 0.822);
     padding: 0.6rem 1.6rem;
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
+
+    &:hover {
+      background: var(--gold-dark);
+      transform: translateY(-1px);
+    }
+
   }
 
-  button:hover {
-    background: var(--gold-dark);
-    transform: translateY(-1px);
-  }
+  
 
 
   @media (max-width:$widthResponsive) {
-    background: $bg-color-nav-3;
-    width: 100%;
+    padding-top: 25px;
+    //background: $bg-color-nav-3;
+    width: 90%;
+    border-top: #3c3519 1px solid;//#282311
+    display: flex;
+    justify-content: center;
 
   
   }
@@ -241,17 +270,6 @@ $bg-color-nav-3: rgba(33, 32, 32, 0.822);
 
 
 
-
-.nav-container {}
-
-.nav-logo svg {}
-
-.nav-links {}
-
-.nav-links a {}
-
-.nav-links a:hover {}
-
 .nav-cta {
   font-family: var(--barlow-cond);
   font-weight: 700;
@@ -270,3 +288,4 @@ $bg-color-nav-3: rgba(33, 32, 32, 0.822);
   background: var(--gold-dark);
   transform: translateY(-1px);
 }
+

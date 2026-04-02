@@ -1,8 +1,7 @@
 import './NavBar.scss'
-import Logo from '../Logos/LogoSinRotulo'
 import ButtonDropdown from './ButtonDropdown/ButtonDropdown'
 import { useEffect, useState } from 'react'
-import { IconInstagram, IconLocation, IconWhatsapp } from '../Icons/Icons'
+import LogoMini from '../Logos/LogoMini'
 
 const options = [
     {
@@ -11,6 +10,14 @@ const options = [
         url: ''
     }, {
         name: 'SERVICIOS',
+        id: 'id-servicios',
+        url: ''
+    }, {
+        name: 'HORARIOS',
+        id: 'id-servicios',
+        url: ''
+    }, {
+        name: 'STAFF',
         id: 'id-servicios',
         url: ''
     },
@@ -23,6 +30,7 @@ const options = [
 
 
 
+// eslint-disable-next-line react/prop-types
 export default function NavBar({ onLoginClick }) {
     const [menuDesplegado, setMenuDesplegado] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
@@ -43,11 +51,12 @@ export default function NavBar({ onLoginClick }) {
 
     return (
         <nav className='container-Navbar'>
+            <div className='bg-blur' />
             <article className='container-logo'>
-                <Logo />
+                <LogoMini />
             </article>
 
-            <article className={`container-menu-options ${menuDesplegado ? "" : "menu-desactivo"}`}>
+            <article className={`container-menu-options ${menuDesplegado ? "menu-activo" : "menu-desactivo"}`}>
                 <section className='container-list-links'>
                   <ul className={`container-link-navbar `}>
                       {options.map((option) => {
@@ -62,7 +71,6 @@ export default function NavBar({ onLoginClick }) {
                  <button onClick={() => { handleLinkClick(); onLoginClick() }}>INGRESAR</button>
 
                 </section>
-
 
             </article>
 
