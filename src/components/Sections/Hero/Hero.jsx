@@ -33,6 +33,9 @@ export default function Hero() {
               </button>
             </div>
           </div>
+          <div>
+            
+          </div>
         </article>
         <div className="hero-watermark">GYM</div>       
       </div>
