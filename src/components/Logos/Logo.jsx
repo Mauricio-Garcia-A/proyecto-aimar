@@ -4,6 +4,7 @@ export default function Logo() {
     return (
 
         <svg
+            width={'auto'}
             version="1.1"
             viewBox="2300 4000 16100 7100">
             <g id="Capa_x0020_1">

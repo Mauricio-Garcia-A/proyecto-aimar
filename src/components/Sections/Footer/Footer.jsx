@@ -6,7 +6,9 @@ const Footer = () => (
 
     <div className="footer__top">
       <div className="footer__brand">
-        <Logo />
+        <div className='footer__logo'>
+          <Logo />
+        </div>
         <p className="footer__slogan">
           Si hay determinación, no hay límites.
         </p>

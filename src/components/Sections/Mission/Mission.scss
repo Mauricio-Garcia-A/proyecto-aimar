@@ -1,0 +1,104 @@
+@use '../../../styles/variables' as *;
+
+.mission {
+  background: $black;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba($gold, 0.15);
+  border-bottom: 1px solid rgba($gold, 0.15);
+
+  // ── Item ────────────────────────────────────────────
+  &__item {
+    padding: 3.5rem 2.5rem;
+    border-right: 1px solid rgba($gold, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &:last-child { border-right: none; }
+  }
+
+  // ── Número decorativo ───────────────────────────────
+  &__num {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-family: $font-condensed;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: rgba($gold, 0.2);
+  }
+
+  // ── Ícono ───────────────────────────────────────────
+  &__icon {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // ── Título ──────────────────────────────────────────
+  &__title {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: $gold;
+  }
+
+  // ── Texto ───────────────────────────────────────────
+  &__text {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    color: $gray;
+    line-height: 1.85;
+  }
+
+  // ── Lista valores ───────────────────────────────────
+  &__values {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  &__value-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-family: $font-body;
+    font-size: 0.88rem;
+    color: $gray;
+    line-height: 1.6;
+  }
+
+  &__value-dot {
+    width: 5px;
+    height: 5px;
+    background: $gold;
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  &__value-name {
+    color: $white;
+    font-weight: 500;
+  }
+
+  // ── Responsive ──────────────────────────────────────
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+
+    &__item {
+      border-right: none;
+      border-bottom: 1px solid rgba($gold, 0.1);
+
+      &:last-child { border-bottom: none; }
+    }
+  }
+}

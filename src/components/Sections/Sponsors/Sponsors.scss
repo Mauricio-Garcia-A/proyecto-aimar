@@ -1,0 +1,103 @@
+@use '../../../styles/variables' as *;
+
+.sponsors {
+  background: #161616;
+  padding: 2rem 0;
+  border-top: 1px solid rgba($gold, 0.08);
+  border-bottom: 1px solid rgba($gold, 0.08);
+  overflow: hidden;
+
+  // ── Header ────────────────────────────────────────────
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 5% 1.5rem;
+  }
+
+  &__label {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba($gray, 0.4);
+    white-space: nowrap;
+  }
+
+  &__line {
+    flex: 1;
+    height: 1px;
+    background: rgba($gold, 0.08);
+  }
+
+  // ── Track ─────────────────────────────────────────────
+  &__wrap {
+    overflow: hidden;
+  }
+
+  &__track {
+    display: inline-flex;
+    align-items: center;
+    animation: sponsors-scroll 28s linear infinite;
+
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  // ── Item ──────────────────────────────────────────────
+  &__item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__logo {
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.3;
+    filter: grayscale(1) brightness(1.8);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+
+    &:hover {
+      opacity: 0.85;
+      filter: grayscale(0) brightness(1);
+    }
+  }
+
+  // ── Imagen real ───────────────────────────────────────
+  &__img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  // ── Placeholder (sin imagen) ──────────────────────────
+  &__placeholder {
+    font-family: $font-condensed;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $white;
+    white-space: nowrap;
+  }
+
+  // ── Separador ─────────────────────────────────────────
+  &__sep {
+    width: 1px;
+    height: 24px;
+    background: rgba($gold, 0.1);
+    flex-shrink: 0;
+  }
+
+  // ── Animación ─────────────────────────────────────────
+  @keyframes sponsors-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+}

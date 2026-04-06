@@ -20,9 +20,12 @@
   }
 
   &__logo {
-    height: 52px;
-    width: auto;
+   
+    svg {
+      width: 200px !important;
     filter: drop-shadow(0 0 8px rgba($gold, 0.25));
+    }
+    
   }
 
   &__slogan {

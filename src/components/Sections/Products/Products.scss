@@ -1,0 +1,151 @@
+@use '../../../styles/variables' as *;
+
+.products {
+  background: $black;
+  padding: 5rem 5%;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba($gold, 0.15);
+  border-top: 1px solid rgba($gold, 0.15);
+  border-bottom: 1px solid rgba($gold, 0.15);
+
+
+
+  // ── Header ────────────────────────────────────────────
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  &__label {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: $gold;
+    margin-bottom: 0.8rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    line-height: 1;
+    color: $white;
+  }
+
+  // ── Arrows ────────────────────────────────────────────
+  &__arrows {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 6px;
+  }
+
+  &__arrow {
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid rgba($gold, 0.3);
+    color: $gold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+
+    &:hover { background: rgba($gold, 0.1); border-color: $gold; }
+
+    &--disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+      &:hover { background: transparent; border-color: rgba($gold, 0.3); }
+    }
+  }
+
+  // ── Carrusel ──────────────────────────────────────────
+  &__wrap {
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    gap: 8px;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  // ── Card ──────────────────────────────────────────────
+  &__card {
+    flex: 0 0 180px;
+    background: $black;
+    border: 1px solid rgba($gold, 0.06);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  // ── Imagen ────────────────────────────────────────────
+  &__img-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: $black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__placeholder {
+    width: 60%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.4;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // ── Info ──────────────────────────────────────────────
+  &__info {
+    padding: 0.9rem 1rem 1.1rem;
+    border-top: 1px solid rgba($gold, 0.06);
+  }
+
+  &__name {
+    font-family: $font-body;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: $white;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__category {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $gray;
+  }
+
+  // ── Responsive ────────────────────────────────────────
+  @media (max-width: 768px) {
+    padding: 4rem 6%;
+  }
+}
