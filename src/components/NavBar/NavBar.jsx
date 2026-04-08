@@ -7,24 +7,23 @@ const options = [
     {
         name: 'NOSOTROS',
         id: 'id-nosotros',
-        url: ''
+        url: '#nosotros'
     }, {
         name: 'SERVICIOS',
         id: 'id-servicios',
-        url: ''
-    }, {
-        name: 'HORARIOS',
-        id: 'id-servicios',
-        url: ''
+        url: '#servicios'
     }, {
         name: 'STAFF',
         id: 'id-servicios',
-        url: ''
-    },
-    {
+        url: '#staff'
+    }, {
+        name: 'HORARIOS',
+        id: 'id-servicios',
+        url: '#horarios'
+    }, {
         name: 'CONTACTO',
         id: 'id-contacto',
-        url: ''
+        url: '#contacto'
     }
 ]
 
@@ -61,7 +60,7 @@ export default function NavBar({ onLoginClick }) {
                   <ul className={`container-link-navbar `}>
                       {options.map((option) => {
                           return <li key={option.id} className='link-navbar'>
-                              <a href="">{option.name}</a>
+                              <a href={option.url}>{option.name}</a>
                           </li>
                       })}
                   </ul>
