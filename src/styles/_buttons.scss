@@ -1,27 +1,30 @@
 @use './variables' as *;
 
 .btn {
-  font-family: $font-condensed;
+  //font-family: $font-condensed;
   font-weight: 800;
   font-size: 1rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   border: none;
-  padding: 1rem 2.5rem;
+  padding: 1rem 1.5rem;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
-  transition: all 0.2s ease;
+ // display: inline-block;
+  transition: all 0.5s ease;
 
   &--primary {
-    background: $gold;
+    background: $gold-dark;
     color: $black;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+    box-shadow: 10px 10px 10px rgb(255, 255, 255) !important;
+    filter: drop-shadow(3px 3px 1px rgba(255, 0, 0, 0.799))!important;
 
     &:hover {
-      background: $gold-dark;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba($gold, 0.3);
+      background: $gold;
+      transform: scale(1.03);
+      color: rgb(255, 255, 255);
+
     }
   }
 
@@ -29,6 +32,7 @@
     background: transparent;
     color: $white;
     border: 1px solid rgba($white, 0.3);
+    
 
     &:hover {
       border-color: $gold;

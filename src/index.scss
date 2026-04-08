@@ -54,3 +54,11 @@ body {
   color: $white;
   overflow-x: hidden;
 }
+
+.standar-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
