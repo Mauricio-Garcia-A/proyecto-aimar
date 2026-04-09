@@ -3,7 +3,6 @@ import NavBar from '../../components/NavBar/NavBar'
 import AboutUs from '../../components/Sections/AboutUs/AboutUs'
 import Contact from '../../components/Sections/Contact/Contact'
 import Footer from '../../components/Sections/Footer/Footer'
-import Hero from '../../components/Sections/Hero/hero'
 import Services from '../../components/Sections/Services/Services'
 import Stars from '../../components/Sections/Stars/Stars'
 import Ticker from '../../components/Sections/Ticker/Ticker'
@@ -14,6 +13,7 @@ import Schedule from '../../components/Sections/Schedule/Schedule'
 import Mission from '../../components/Sections/Mission/Mission'
 import Products from '../../components/Sections/Products/Products'
 import Sponsors from '../../components/Sections/Sponsors/Sponsors'
+import Hero from '../../components/Sections/Hero/Hero'
 
 
 export default function Home() {
