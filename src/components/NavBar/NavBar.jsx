@@ -14,11 +14,11 @@ const options = [
         url: '#servicios'
     }, {
         name: 'STAFF',
-        id: 'id-servicios',
+        id: 'id-staff',
         url: '#staff'
     }, {
         name: 'HORARIOS',
-        id: 'id-servicios',
+        id: 'id-horarios',
         url: '#horarios'
     }, {
         name: 'CONTACTO',
