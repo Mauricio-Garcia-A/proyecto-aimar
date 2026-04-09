@@ -1,14 +1,14 @@
 @use '../../../styles/variables' as *;
 
-.schedule {
+.container-horarios {
   background: $black;
   background: linear-gradient(to bottom, #2a2828, $dark);
-  padding: 7rem 5%;
+  //padding: 7rem 5%;
   position: relative;
 
   .bg-horarios {
 
-   z-index: 0;
+    z-index: 0;
     width: 100%;
 
     .top {
@@ -30,11 +30,20 @@
     }
   }
 
+}
+
+.schedule {
+ padding: 7rem 5%;
+  position: relative;
+
+
 
   &::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 1px;
     background: linear-gradient(to right, transparent, $gold, transparent);
   }
@@ -77,18 +86,24 @@
     overflow: hidden;
     transition: background 0.3s;
 
-    &:hover { background: $dark2; }
+    &:hover {
+      background: $dark2;
+    }
 
     &::after {
       content: '';
       position: absolute;
-      bottom: 0; left: 0;
-      width: 0; height: 2px;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
       background: $gold;
       transition: width 0.4s;
     }
 
-    &:hover::after { width: 100%; }
+    &:hover::after {
+      width: 100%;
+    }
   }
 
   &__block-icon {
@@ -99,7 +114,7 @@
     svg {
       width: 70px;
       fill: $gold;
-     
+
     }
   }
 
@@ -130,7 +145,9 @@
     color: $gray;
     line-height: 1.8;
 
-    strong { color: $white; }
+    strong {
+      color: $white;
+    }
   }
 
   &__block-note {
@@ -244,7 +261,9 @@
     background: rgba($gold, 0.08);
   }
 
-  &__col { background: $black; }
+  &__col {
+    background: $black;
+  }
 
   &__col-head {
     font-family: $font-condensed;
@@ -272,7 +291,9 @@
     border-left: 2px solid $gold;
     transition: background 0.2s;
 
-    &:hover { background: $dark2; }
+    &:hover {
+      background: $dark2;
+    }
   }
 
   &__clase-name {
@@ -334,7 +355,9 @@
   }
 
   // ── Mobile ────────────────────────────────────────────
-  &__mobile { display: none; }
+  &__mobile {
+    display: none;
+  }
 
   &__mobile-filters {
     display: flex;
@@ -364,13 +387,18 @@
     align-items: center;
     gap: 4px;
 
-    &:hover .schedule__tab-day { color: $white; }
+    &:hover .schedule__tab-day {
+      color: $white;
+    }
 
     &--active {
       border-bottom-color: $gold;
       background: $dark2;
 
-      .schedule__tab-day   { color: $gold; }
+      .schedule__tab-day {
+        color: $gold;
+      }
+
       .schedule__tab-count {
         background: $gold;
         color: $black;
@@ -418,7 +446,9 @@
     border-left: 2px solid $gold;
     transition: background 0.2s;
 
-    &:hover { background: $dark2; }
+    &:hover {
+      background: $dark2;
+    }
   }
 
   &__tab-time {
@@ -463,10 +493,24 @@
   @media (max-width: 768px) {
     padding: 5rem 6%;
 
-    &__filters-wrap { display: none; }
-    &__grid          { display: none; }
-    &__legend        { display: none; }
-    &__note          { display: none; }
-    &__mobile        { display: block; }
+    &__filters-wrap {
+      display: none;
+    }
+
+    &__grid {
+      display: none;
+    }
+
+    &__legend {
+      display: none;
+    }
+
+    &__note {
+      display: none;
+    }
+
+    &__mobile {
+      display: block;
+    }
   }
 }

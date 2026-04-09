@@ -1,11 +1,16 @@
 @use '../../../styles/variables' as *;
 
-.mission {
+.mission-container {
   background: $black;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid rgba($gold, 0.15);
   border-bottom: 1px solid rgba($gold, 0.15);
+}
+
+.mission {
+  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  
 
   // ── Item ────────────────────────────────────────────
   &__item {

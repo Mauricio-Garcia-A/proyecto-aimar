@@ -70,9 +70,10 @@ const Services = () => {
         <BgTopServices className="top" />
         <BgBottomServices className="bottom" />
       </div>
-      <article className='container-services'>
 
-      
+      <div className='SECTION-STANDAR '>
+        <div className='CONTAINER-STANDAR '>
+          <article className='container-services'>
       <div className="services__header">
         <p className="services__label">Lo que ofrecemos</p>
         <h2 className="services__title">
@@ -96,6 +97,9 @@ const Services = () => {
         ))}
       </div>
       </article>
+        </div>
+      </div>
+      
     </section>
   )
 }

@@ -148,81 +148,88 @@ const Staff = () => {
   const activeDot = ((current - visible) % STAFF.length + STAFF.length) % STAFF.length
 
   return (
-    <section className="staff" id="staff">
-
+    <section className='container-staff' id="staff">
       <div className='bg-staff'>
         <img src='./images/bg-staff.png' />
       </div>
-      <article style={{ zIndex: '2', position:'relative'}} >
-        <div className="staff__header">
-          <div>
-            <p className="staff__label">Nuestro equipo</p>
-            <h2 className="staff__title">El Staff</h2>
-          </div>
-          <div className="staff__controls">
-            <button className="staff__arrow" onClick={goPrev} aria-label="Anterior">&#8592;</button>
-            <button className="staff__arrow" onClick={goNext} aria-label="Siguiente">&#8594;</button>
-            <div className="staff__sep" />
-            <button
-              className={`staff__pause${paused ? ' staff__pause--paused' : ''}`}
-              onClick={togglePause}
-              aria-label={paused ? 'Reanudar' : 'Pausar'}
-            >
-              {paused ? '▶' : '⏸'}
-            </button>
-          </div>
-        </div>
 
-        <div
-          className="staff__wrap"
-          ref={wrapRef}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="staff__track" ref={trackRef}>
-            {items.map((s, i) => {
-              const isActive = i === current
-              return (
-                <div
-                  key={i}
-                  className={`staff__card${isActive ? ' staff__card--active' : ''}`}
-                  onClick={() => !s.clone && goTo(i)}
-                  style={{ '--visible': visible }}
+      <div className='SECTION-STANDAR '>
+        <div className='CONTAINER-STANDAR '>
+          <article className="staff" >
+            <div className="staff__header">
+              <div>
+                <p className="staff__label">Nuestro equipo</p>
+                <h2 className="staff__title">El Staff</h2>
+              </div>
+              <div className="staff__controls">
+                <button className="staff__arrow" onClick={goPrev} aria-label="Anterior">&#8592;</button>
+                <button className="staff__arrow" onClick={goNext} aria-label="Siguiente">&#8594;</button>
+                <div className="staff__sep" />
+                <button
+                  className={`staff__pause${paused ? ' staff__pause--paused' : ''}`}
+                  onClick={togglePause}
+                  aria-label={paused ? 'Reanudar' : 'Pausar'}
                 >
-                  <div className="staff__photo" data-alt={i % 2 === 0}>
-                    <span className="staff__initials">{s.initials}</span>
-                    <div className="staff__overlay" />
-                    <img src={s.srl}/>
-                  </div>
-                  <div className="staff__info">
-                    <div className="staff__name">{s.name}</div>
-                    <div className="staff__role">{s.role}</div>
-                    <div className="staff__spec">{s.spec}</div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+                  {paused ? '▶' : '⏸'}
+                </button>
+              </div>
+            </div>
 
-        <div className="staff__dots">
-          {STAFF.map((_, i) => (
-            <button
-              key={i}
-              className={`staff__dot${i === activeDot ? ' staff__dot--active' : ''}`}
-              onClick={() => goTo(i + visible)}
-              aria-label={`Ir al profesor ${i + 1}`}
-            />
-          ))}
-        </div>
+            <div
+              className="staff__wrap"
+              ref={wrapRef}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="staff__track" ref={trackRef}>
+                {items.map((s, i) => {
+                  const isActive = i === current
+                  return (
+                    <div
+                      key={i}
+                      className={`staff__card${isActive ? ' staff__card--active' : ''}`}
+                      onClick={() => !s.clone && goTo(i)}
+                      style={{ '--visible': visible }}
+                    >
+                      <div className="staff__photo" data-alt={i % 2 === 0}>
+                        <span className="staff__initials">{s.initials}</span>
+                        <div className="staff__overlay" />
+                        <img src={s.srl} />
+                      </div>
+                      <div className="staff__info">
+                        <div className="staff__name">{s.name}</div>
+                        <div className="staff__role">{s.role}</div>
+                        <div className="staff__spec">{s.spec}</div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
 
-        <div className="staff__progress-bar">
-          <div
-            className={`staff__progress${paused ? ' staff__progress--paused' : ''}`}
-            ref={progBarRef}
-          />
+            <div className="staff__dots">
+              {STAFF.map((_, i) => (
+                <button
+                  key={i}
+                  className={`staff__dot${i === activeDot ? ' staff__dot--active' : ''}`}
+                  onClick={() => goTo(i + visible)}
+                  aria-label={`Ir al profesor ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <div className="staff__progress-bar">
+              <div
+                className={`staff__progress${paused ? ' staff__progress--paused' : ''}`}
+                ref={progBarRef}
+              />
+            </div>
+          </article>
+
         </div>
-      </article>
+      </div>
+
+
     </section>
   )
 }

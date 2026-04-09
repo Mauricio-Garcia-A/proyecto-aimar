@@ -88,15 +88,21 @@ const ITEMS = [
 ]
 
 const Mission = () => (
-  <section className="mission" id="mision">
-    {ITEMS.map((item) => (
-      <div className="mission__item" key={item.num}>
-        <span className="mission__num">{item.num}</span>
-        <div className="mission__icon">{item.icon}</div>
-        <div className="mission__title">{item.title}</div>
-        {item.content}
+  <section className='mission-container' id="mision">
+    <div className='SECTION-STANDAR '>
+      <div className='CONTAINER-STANDAR '>
+        <article className="mission" >
+          {ITEMS.map((item) => (
+            <div className="mission__item" key={item.num}>
+              <span className="mission__num">{item.num}</span>
+              <div className="mission__icon">{item.icon}</div>
+              <div className="mission__title">{item.title}</div>
+              {item.content}
+            </div>
+          ))}
+        </article>
       </div>
-    ))}
+    </div> 
   </section>
 )
 

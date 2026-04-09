@@ -1,7 +1,7 @@
 import './Contact.scss'
 
 import { IconFacebook, IconInstagram } from '../../Icons/IconsRedesSociales';
-import { IconWhatsapp, IconTelefono} from '../../Icons/Icons';
+import { IconWhatsapp, IconTelefono } from '../../Icons/Icons';
 import ContactMap from './ContactMap'
 
 const CONTACT_ITEMS = [
@@ -32,32 +32,42 @@ const CONTACT_ITEMS = [
 ]
 
 const Contact = () => (
-  <section className="contact" id="contacto">
+  <section className="container-contact" id="contacto">
 
-    <div className="contact__header">
-      <p className="contact__label">Encontranos</p>
-      <h2 className="contact__title">Contacto</h2>
-    </div>
+    <div className='SECTION-STANDAR '>
+      <div className='CONTAINER-STANDAR '>
+        <article className="contact" >
+          <div className="contact__header">
+            <p className="contact__label">Encontranos</p>
+            <h2 className="contact__title">Contacto</h2>
+          </div>
 
-    <div className="contact__grid">
+          <div className="contact__grid">
 
-      <ul className="contact__list">
-        {CONTACT_ITEMS.map((item) => (
-          <li className="contact__item" key={item.label}>
-            <div className="contact__icon">{item.icon}</div>
-            <div className="contact__info">
-              <span className="contact__info-label">{item.label}</span>
-               <a href={item.href} className='contact__info-value'>{item.value}</a> 
+            <ul className="contact__list">
+              {CONTACT_ITEMS.map((item) => (
+                <li className="contact__item" key={item.label}>
+                  <div className="contact__icon">{item.icon}</div>
+                  <div className="contact__info">
+                    <span className="contact__info-label">{item.label}</span>
+                    <a href={item.href} className='contact__info-value'>{item.value}</a>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div className="contact__map">
+              <ContactMap />
             </div>
-          </li>
-        ))}
-      </ul>
-            
-      <div className="contact__map">
-        <ContactMap />
-      </div>
 
+          </div>
+
+        </article>
+
+      </div>
     </div>
+
+
   </section>
 )
 

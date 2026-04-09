@@ -2,30 +2,30 @@ import { useRef, useState, useEffect, useCallback } from 'react'
 import './Products.scss'
 
 const PRODUCTS = [
-  { name: 'Agua',              category: 'Hidratación',  img: './images/products/Aguas.png' },
-  { name: 'Jugos naturales',   category: 'Bebidas',      img: './images/products/Jugos.png' },
-  { name: 'Barras nutritivas', category: 'Nutrición',    img: './images/products/BarraCereal.png' },
-  { name: 'Proteínas',         category: 'Suplementos',  img: './images/products/Proteinas.png' },
-  { name: 'Creatina',          category: 'Suplementos',  img: './images/products/Creatina.png' },
-  { name: 'Remeras Aimar',     category: 'Indumentaria', img: './images/products/Remera.png' },
-  { name: 'Shorts',            category: 'Indumentaria', img: './images/products/Short.png' },
-  { name: 'Guantes',        category: 'Equipamiento', img: './images/products/Guantes.png' },
+  { name: 'Agua', category: 'Hidratación', img: './images/products/Aguas.png' },
+  { name: 'Jugos naturales', category: 'Bebidas', img: './images/products/Jugos.png' },
+  { name: 'Barras nutritivas', category: 'Nutrición', img: './images/products/BarraCereal.png' },
+  { name: 'Proteínas', category: 'Suplementos', img: './images/products/Proteinas.png' },
+  { name: 'Creatina', category: 'Suplementos', img: './images/products/Creatina.png' },
+  { name: 'Remeras Aimar', category: 'Indumentaria', img: './images/products/Remera.png' },
+  { name: 'Shorts', category: 'Indumentaria', img: './images/products/Short.png' },
+  { name: 'Guantes', category: 'Equipamiento', img: './images/products/Guantes.png' },
 ]
 
-const CARD_WIDTH  = 180
-const CARD_GAP    = 100
+const CARD_WIDTH = 180
+const CARD_GAP = 100
 
 const Products = () => {
-  const trackRef  = useRef(null)
-  const wrapRef   = useRef(null)
-  const [offset, setOffset]   = useState(0)
+  const trackRef = useRef(null)
+  const wrapRef = useRef(null)
+  const [offset, setOffset] = useState(0)
   const [maxOffset, setMaxOffset] = useState(0)
 
   useEffect(() => {
     const calcMax = () => {
       if (!wrapRef.current) return
       const total = PRODUCTS.length * (CARD_WIDTH + CARD_GAP) - CARD_GAP
-      const wrap  = wrapRef.current.offsetWidth
+      const wrap = wrapRef.current.offsetWidth
       setMaxOffset(Math.max(0, total - wrap))
     }
     calcMax()
@@ -50,8 +50,9 @@ const Products = () => {
 
   return (
     <section className="products" id="productos">
-
-      <div className="products__header">
+      <div className='SECTION-STANDAR '>
+        <div className='CONTAINER-STANDAR '>
+<article className="products__header">
         <div>
           <p className="products__label">Productos Disponible en el gym</p>
         </div>
@@ -73,9 +74,8 @@ const Products = () => {
             &#8594;
           </button>
         </div>
-      </div>
-
-      <div className="products__wrap" ref={wrapRef}>
+      </article>
+      <article className="products__wrap" ref={wrapRef}>
         <div className="products__track" ref={trackRef}>
           {PRODUCTS.map((p) => (
             <div className="products__card" key={p.name}>
@@ -89,9 +89,9 @@ const Products = () => {
                 ) : (
                   <div className="products__placeholder">
                     <svg viewBox="0 0 48 48" fill="none">
-                      <rect x="8" y="8" width="32" height="32" rx="2" stroke="#333" strokeWidth="1"/>
-                      <path d="M8 32 L16 22 L22 28 L30 18 L40 32" stroke="#333" strokeWidth="1" strokeLinejoin="round"/>
-                      <circle cx="18" cy="16" r="3" stroke="#333" strokeWidth="1"/>
+                      <rect x="8" y="8" width="32" height="32" rx="2" stroke="#333" strokeWidth="1" />
+                      <path d="M8 32 L16 22 L22 28 L30 18 L40 32" stroke="#333" strokeWidth="1" strokeLinejoin="round" />
+                      <circle cx="18" cy="16" r="3" stroke="#333" strokeWidth="1" />
                     </svg>
                   </div>
                 )}
@@ -103,7 +103,13 @@ const Products = () => {
             </div>
           ))}
         </div>
+      </article>
+          
+        </div>
       </div>
+      
+
+
 
     </section>
   )

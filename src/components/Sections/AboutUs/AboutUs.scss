@@ -2,7 +2,7 @@
 
 .about {
   background: $dark;
-  padding: 7rem 5%;
+  //padding: 7rem 5%;
   //display: grid;
   //grid-template-columns: 1fr 1fr;
   //gap: 6rem;
@@ -12,17 +12,20 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   overflow: hidden;
+  
+  /*
   .image-bg {
     opacity: 0.1;
     position: absolute;
     bottom: 0;
     height: 80hv;
     left: 10vw;
-  
   }
+  */
+
   .bg-nosotros {
     position: absolute;
     z-index: 0;
@@ -37,6 +40,7 @@
     background-position-y: top;   /* Centra la imagen */
 
   }
+  
   // ── Visual ────────────────────────────────────────────
   &__visual {
     position: relative;
@@ -91,6 +95,7 @@
     flex-direction: column;
     gap: 0;
     z-index: 1;
+    padding: 7rem 5%;
         
 
   }

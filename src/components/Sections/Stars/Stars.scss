@@ -1,12 +1,17 @@
 @use '../../../styles/variables' as *;
 
-.stars {
+.container-stars {
   background: $black;
+  border-top: 1px solid rgba($gold, 0.15);
+  border-bottom: 1px solid rgba($gold, 0.15);
+}
+
+.stars {
+  
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 5rem 5%;
-  border-top: 1px solid rgba($gold, 0.15);
-  border-bottom: 1px solid rgba($gold, 0.15);
+  
 
   &__item {
     display: flex;

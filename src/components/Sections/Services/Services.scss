@@ -4,12 +4,15 @@
 .services {
   background: $dark;
   background: linear-gradient(to bottom, $dark, #2a2828);
-  padding: 7rem 5%;
+  //padding: 7rem 5%;
   position: relative;
+  //height: 100vh;    
 
   .container-services {
     position: relative;
     z-index: 1;
+    padding: 7rem 5%;
+    
   }
 
   .bg-services {

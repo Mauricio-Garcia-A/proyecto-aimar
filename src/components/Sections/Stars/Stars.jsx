@@ -8,14 +8,21 @@ const STARS = [
 ]
 
 const Stars = () => (
-  <section className="stars" id="stars">
-    {STARS.map((star) => (
-      <div className="stars__item" key={star.label}>
-        <span className="stars__number">{star.value}</span>
-        <span className="stars__label">{star.label}</span>
+  <section className='container-stars'>
+    <div className='SECTION-STANDAR '>
+      <div className='CONTAINER-STANDAR '>
+        <article className="stars" id="stars">
+          {STARS.map((star) => (
+            <div className="stars__item" key={star.label}>
+              <span className="stars__number">{star.value}</span>
+              <span className="stars__label">{star.label}</span>
+            </div>
+          ))}
+        </article>
       </div>
-    ))}
+    </div>
   </section>
+
 )
 
 export default Stars
