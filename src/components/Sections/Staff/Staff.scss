@@ -4,7 +4,7 @@
   position: relative;
   background: $dark;
   background: white;
-  z-index: '2';
+  //z-index: '2';
 
 
   .bg-staff {
@@ -24,6 +24,8 @@
 .staff {
   padding: 7rem 5%;
   overflow: hidden;
+  z-index: 2;
+  position: relative;
 
   &::before {
     content: '';
