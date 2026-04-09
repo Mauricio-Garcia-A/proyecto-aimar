@@ -2,18 +2,18 @@ import { useRef, useState, useEffect, useCallback } from 'react'
 import './Products.scss'
 
 const PRODUCTS = [
-  { name: 'Agua',              category: 'Hidratación',  img: null },
-  { name: 'Jugos naturales',   category: 'Bebidas',      img: null },
-  { name: 'Barras nutritivas', category: 'Nutrición',    img: null },
-  { name: 'Proteínas',         category: 'Suplementos',  img: null },
-  { name: 'Creatina',          category: 'Suplementos',  img: null },
-  { name: 'Remeras Aimar',     category: 'Indumentaria', img: null },
-  { name: 'Shorts',            category: 'Indumentaria', img: null },
-  { name: 'Accesorios',        category: 'Equipamiento', img: null },
+  { name: 'Agua',              category: 'Hidratación',  img: './images/products/Aguas.png' },
+  { name: 'Jugos naturales',   category: 'Bebidas',      img: './images/products/Jugos.png' },
+  { name: 'Barras nutritivas', category: 'Nutrición',    img: './images/products/BarraCereal.png' },
+  { name: 'Proteínas',         category: 'Suplementos',  img: './images/products/Proteinas.png' },
+  { name: 'Creatina',          category: 'Suplementos',  img: './images/products/Creatina.png' },
+  { name: 'Remeras Aimar',     category: 'Indumentaria', img: './images/products/Remera.png' },
+  { name: 'Shorts',            category: 'Indumentaria', img: './images/products/Short.png' },
+  { name: 'Guantes',        category: 'Equipamiento', img: './images/products/Guantes.png' },
 ]
 
 const CARD_WIDTH  = 180
-const CARD_GAP    = 8
+const CARD_GAP    = 100
 
 const Products = () => {
   const trackRef  = useRef(null)

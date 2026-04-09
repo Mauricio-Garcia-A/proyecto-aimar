@@ -2,9 +2,22 @@
 
 .staff {
   background: $dark;
+  background: white;
   padding: 7rem 5%;
   position: relative;
   overflow: hidden;
+
+  .bg-staff {
+   width: 100vw;
+    img {
+      position: absolute;
+      width: 100%;
+      z-index: 0;
+      left: 0;
+      bottom: 20px;
+     // opacity: 0.5;
+    }
+  }
 
   &::before {
     content: '';
@@ -94,18 +107,21 @@
   // ── Card ──────────────────────────────────────────────
   &__card {
     flex: 0 0 calc(100% / var(--visible, 5) - 7px);
-    background: $black;
+    background: rgba($black, 0.6); // 👈 importante: semitransparente
+    backdrop-filter: blur(15px);
     border: 1px solid rgba($gold, 0.06);
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    opacity: 0.45;
-    transform: scale(0.94);
+    //opacity: 0.45;
+    filter: grayscale(1);
+    transform: scale(0.8);
     transition:
       opacity 0.4s ease,
       transform 0.4s ease,
-      background 0.3s ease,
+      all 0.3s ease,
       border-color 0.3s ease;
+      
 
     &::after {
       content: '';
@@ -117,15 +133,19 @@
     }
 
     &--active {
-      opacity: 1;
+      //opacity: 1;
       transform: scale(1);
+      filter: grayscale(0);
       border-color: rgba($gold, 0.2);
 
       &::after { width: 100%; }
     }
 
     &:hover:not(&--active) {
-      opacity: 0.7;
+      //opacity: 0.7;
+      filter: grayscale(0.4);
+      transform: scale(0.9);
+      
     }
   }
 
@@ -139,6 +159,11 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
+
+    img {
+      height: 100%;
+      position: absolute;
+    }
 
     &[data-alt='true'] { background: #161616; }
   }

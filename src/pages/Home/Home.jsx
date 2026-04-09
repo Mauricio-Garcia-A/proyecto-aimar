@@ -32,9 +32,9 @@ export default function Home() {
         <Services />
         <Products />
         <Staff />
-        <Stars />
-        <Schedule />
         <Sponsors />
+        <Schedule />
+        <Stars />
         <Contact />
         <LoginModal
           isOpen={loginOpen}

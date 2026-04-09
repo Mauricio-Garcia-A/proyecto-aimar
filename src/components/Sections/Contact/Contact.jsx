@@ -1,41 +1,33 @@
 import './Contact.scss'
 
+import { IconFacebook, IconInstagram } from '../../Icons/IconsRedesSociales';
+import { IconWhatsapp, IconTelefono} from '../../Icons/Icons';
+import ContactMap from './ContactMap'
+
 const CONTACT_ITEMS = [
   {
-    icon: '📱',
+    icon: <IconWhatsapp />,
     label: 'WhatsApp',
-    value: '2213591030',
+    value: '+54 9 (0221)3591030',
     href: 'https://wa.me/542213591030',
   },
   {
-    icon: '📸',
+    icon: <IconInstagram />,
     label: 'Instagram',
     value: '@aimargym',
     href: 'https://instagram.com/aimargym',
   },
   {
-    icon: '📘',
+    icon: <IconFacebook />,
     label: 'Facebook',
     value: 'aimar.gym',
     href: 'https://facebook.com/aimar.gym',
   },
   {
-    icon: '📍',
-    label: 'Dirección',
-    value: 'Av. 1 Nº 1362 esq. 60, La Plata',
-    href: 'https://maps.google.com/?q=Av.+1+1362+La+Plata+Buenos+Aires',
-  },
-  {
-    icon: '📞',
+    icon: <IconTelefono />,
     label: 'Teléfono',
-    value: '0221 427-7334',
+    value: '(0221) 427-7334',
     href: 'tel:+542214277334',
-  },
-  {
-    icon: '🕐',
-    label: 'Horarios',
-    value: 'Lun–Vie: 8 a 22hs · Sáb: 9 a 12hs',
-    href: null,
   },
 ]
 
@@ -55,22 +47,14 @@ const Contact = () => (
             <div className="contact__icon">{item.icon}</div>
             <div className="contact__info">
               <span className="contact__info-label">{item.label}</span>
-              www
+               <a href={item.href} className='contact__info-value'>{item.value}</a> 
             </div>
           </li>
         ))}
       </ul>
-
-      <div className="contact__cta">
-        <img src='./images/ejemplomap.png' />
-        <p className="contact__cta-heading">¿Ya sos alumno?</p>
-        <p className="contact__cta-text">
-          Accedé a tu cuenta para ver tus rutinas y registrar
-          tus entrenamientos diarios.
-        </p>
-        <div className="btn btn--primary">
-          Av. 1 Nº 1362 esq. 60, La Plata
-        </div>
+            
+      <div className="contact__map">
+        <ContactMap />
       </div>
 
     </div>

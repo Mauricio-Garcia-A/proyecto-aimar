@@ -2,9 +2,10 @@ import './AboutUs.scss'
 
 const AboutUs = () => (
   <section className="about" id="nosotros">
-
+    <div className='bg-nosotros'></div>
+{/*
     <img src='./images/gymbg.png' className='image-bg'/>
-    {/*
+    
     <div className="about__visual">
       <div className="about__visual-main">
         <span className="about__visual-watermark">AIMAR</span>

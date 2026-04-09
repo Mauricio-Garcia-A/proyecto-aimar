@@ -2,6 +2,8 @@
 
 .contact {
   background: $black;
+  background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(245, 197, 24, 0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(245, 197, 24, 0.05) 0%, transparent 60%), linear-gradient(160deg, #0f0f0fc4 0%, #0a0a0a3f 100%);
+
   padding: 7rem 5%;
   position: relative;
 
@@ -62,12 +64,16 @@
     width: 46px;
     height: 46px;
     flex-shrink: 0;
-    background: rgba($gold, 0.08);
-    border: 1px solid rgba($gold, 0.18);
+    //background: rgba($gold, 0.08);
+    //border: 1px solid rgba($gold, 0.18);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
+
+    svg {
+      fill: $gold;
+    }
   }
 
   &__info {
@@ -83,12 +89,16 @@
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: $gold;
+    a {
+      text-decoration: none;
+    }
   }
 
   &__info-value {
     font-family: $font-body;
     font-size: 1rem;
     color: $white;
+    
 
     &--link {
       text-decoration: none;

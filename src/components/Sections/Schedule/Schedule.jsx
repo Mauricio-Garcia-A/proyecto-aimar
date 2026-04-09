@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import './Schedule.scss'
+import BgBottomServices from '../Services/bg-bottom-services'
+import BgTopServices from '../Services/bg-top-services'
+import { IconTimeClases, IconTimeMasajes, IconTimeMusculacion } from '../../Icons/IconsHorarios'
+
 
 const DAYS       = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
 const DAYS_SHORT = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
@@ -50,6 +54,10 @@ const Schedule = () => {
 
   return (
     <section className="schedule" id="horarios">
+      <div className='bg-horarios'>
+        <BgBottomServices className='top' />
+        <BgTopServices className='bottom' />
+      </div>
 
       {/* ── Header ── */}
       <div className="schedule__header">
@@ -60,7 +68,7 @@ const Schedule = () => {
       {/* ── 3 Bloques superiores ── */}
       <div className="schedule__blocks">
         <div className="schedule__block">
-          <span className="schedule__block-icon">🏋️</span>
+          <span className="schedule__block-icon"><IconTimeMusculacion /></span>
           <div className="schedule__block-name">Musculación</div>
           <span className="schedule__block-badge">Ingreso libre</span>
           <p className="schedule__block-hours">
@@ -70,7 +78,7 @@ const Schedule = () => {
         </div>
 
         <div className="schedule__block">
-          <span className="schedule__block-icon">📅</span>
+          <span className="schedule__block-icon"><IconTimeClases /></span>
           <div className="schedule__block-name">Clases grupales</div>
           <span className="schedule__block-badge">Con horario fijo</span>
           <p className="schedule__block-hours">
@@ -81,7 +89,7 @@ const Schedule = () => {
         </div>
 
         <div className="schedule__block">
-          <span className="schedule__block-icon">💆</span>
+          <span className="schedule__block-icon"><IconTimeMasajes /></span>
           <div className="schedule__block-name">Masajes</div>
           <span className="schedule__block-badge">A coordinar</span>
           <p className="schedule__block-hours">

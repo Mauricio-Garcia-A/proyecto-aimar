@@ -1,13 +1,15 @@
 @use '../../../styles/variables' as *;
 
 .products {
-  background: $black;
-  padding: 5rem 5%;
+  background: linear-gradient(to bottom, rgb(130, 130, 130), rgb(255, 255, 255));
+  //background: $black;
+
+  //padding: 5rem 5%;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba($gold, 0.15);
-  border-top: 1px solid rgba($gold, 0.15);
-  border-bottom: 1px solid rgba($gold, 0.15);
+  //border-top: 1px solid rgba($gold, 0.15);
+  //border-top: 1px solid rgba($gold, 0.15);
+  //border-bottom: 1px solid rgba($gold, 0.15);
 
 
 
@@ -16,7 +18,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    //margin-bottom: 2rem;
   }
 
   &__label {
@@ -25,7 +27,7 @@
     font-size: 0.78rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: $gold;
+    color: rgb(255, 68, 0);
     margin-bottom: 0.8rem;
   }
 
@@ -72,7 +74,7 @@
 
   &__track {
     display: flex;
-    gap: 8px;
+    gap: 100px;
     transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
   }
@@ -80,7 +82,7 @@
   // ── Card ──────────────────────────────────────────────
   &__card {
     flex: 0 0 180px;
-    background: $black;
+    //background: $black;
     border: 1px solid rgba($gold, 0.06);
     user-select: none;
     pointer-events: none;
@@ -90,7 +92,7 @@
   &__img-wrap {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background: $black;
+   // background: $black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,18 +123,20 @@
   // ── Info ──────────────────────────────────────────────
   &__info {
     padding: 0.9rem 1rem 1.1rem;
-    border-top: 1px solid rgba($gold, 0.06);
+    border-top: 1px solid rgba($gold, 0.1);
   }
 
   &__name {
     font-family: $font-body;
     font-size: 0.88rem;
     font-weight: 500;
-    color: $white;
+    color: rgb(44, 44, 44);
     margin-bottom: 0.2rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+            filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.534));
+
   }
 
   &__category {
@@ -141,7 +145,7 @@
     font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: $gray;
+    color: orangered;
   }
 
   // ── Responsive ────────────────────────────────────────
