@@ -8,16 +8,16 @@
   /* Centra la imagen */
   background-repeat: no-repeat;
   /* Evita que se repita */
-
+  
+  overflow: hidden;
 }
 
 .hero-bg {
   position: relative;
   inset: 0;
-  height: 100vh;
-  min-height: 730px;
-
-  overflow: hidden;
+  height: 100%;
+  min-height: 100vh;
+  
   /* Reemplaza la URL por tu imagen local en /public o /assets */
   background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(245, 197, 24, 0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(245, 197, 24, 0.05) 0%, transparent 60%), linear-gradient(160deg, #0f0f0fc4 0%, #0a0a0a3f 100%);
 
@@ -56,19 +56,20 @@ $MarginTopNavbar: 100px;
 
 .container-hero {
   margin-top: $MarginTopNavbar;
-  height: calc(100% - $MarginTopNavbar);
+  height: 100%;
   width: 100%;
-
+  min-height: 88vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   position: relative;
   overflow: hidden;
+  gap: 2rem;
   //background: rgba(255, 0, 0, 0.229);
   padding: 0 5%;
   padding-top: 1%;
-  padding-bottom: 70px;
+  padding-bottom: 30px;
 
   // Stagger animations on mount
   .--visible {
@@ -98,7 +99,7 @@ $MarginTopNavbar: 100px;
     justify-content: end;
     align-items: center;
     gap: 15px;
-
+    padding-right: 20px;
     a {
 
       svg {
@@ -119,7 +120,7 @@ $MarginTopNavbar: 100px;
 
   // ── Contenido Principal─────────────────────────────────────────────
   .hero__info {
-    // background: #f5c51874;
+    //background: #f5c51874;
     padding-top: 0px;
 
     position: relative;
@@ -137,7 +138,7 @@ $MarginTopNavbar: 100px;
       color: rgba($gold, 0.9);
       filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.799));
 
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       opacity: 0;
     }
 
@@ -145,7 +146,7 @@ $MarginTopNavbar: 100px;
       opacity: 0;
 
       svg {
-        width: 70vw;
+        width: 90vw;
         max-width: 550px;
         filter: drop-shadow(6px 6px 3px rgba(0, 0, 0, 0.799));
 
@@ -161,7 +162,7 @@ $MarginTopNavbar: 100px;
       color: $gray;
       filter: drop-shadow(3px 3px 0.5px rgb(0, 0, 0));
 
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       opacity: 0;
     }
 
@@ -173,18 +174,39 @@ $MarginTopNavbar: 100px;
       color: rgba($white, 1);
       filter: drop-shadow(6px 6px 1px rgba(0, 0, 0, 0.799));
       text-transform: uppercase;
-      margin-bottom: 2.8rem;
+      //margin-bottom: 2.8rem;
       opacity: 0;
     }
 
   }
 
   .hero__actions {
-    // background: #f5c51874;
+    //background: #f5c51874;
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
     //opacity: 1;
+  }
+
+  @media (max-width:'430px') {
+    .hero__info {
+      .hero__tag {
+        font-size: 0.8rem;
+      }
+      .hero__sub {
+        font-size: 0.9rem;
+      }
+      .hero__slogan {
+        font-size: 1.5rem;
+      }
+    }
+    .hero__actions {
+      .btn {
+        font-size: 0.7rem ;
+        text-align: center;
+      }
+      
+    }
   }
 
 }
