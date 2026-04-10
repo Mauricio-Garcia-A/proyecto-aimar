@@ -49,10 +49,15 @@ export default function NavBar({ onLoginClick }) {
 
 
     return (
-        <nav className='container-Navbar'>
-            <div className='bg-blur' />
+      <section className='section-Navbar'>
+        <div className='bg-blur' />
+        <div className='container-Navbar'>
+          <nav className='Navbar'>
             <article className='container-logo'>
+              <a href='#inicio'>
                 <LogoMini />
+              </a>
+                
             </article>
 
             <article className={`container-menu-options ${menuDesplegado ? "menu-activo" : "menu-desactivo"}`}>
@@ -82,5 +87,10 @@ export default function NavBar({ onLoginClick }) {
             </div>
 
         </nav>
+
+        </div>
+         
+      </section>
+       
     )
 }
