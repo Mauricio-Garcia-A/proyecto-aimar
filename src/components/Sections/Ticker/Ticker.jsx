@@ -1,13 +1,13 @@
 import './Ticker.scss'
 
 const ITEMS = [
-  'Musculación',
-  'Lunes a Viernes · 8 a 22hs',
-  'Sábados · 9 a 12hs',
-  'WhatsApp · 2213591030',
-  'Instagram · @aimargym',
-  'Av. 1 Nº 1362 esq. 60 · La Plata',
-  'Si hay determinación, no hay límites',
+  ['Musculación','full time'],
+  ['Lunes a Viernes ','8 a 22hs'],
+  ['Sábados ','9 a 12hs'],
+  ['WhatsApp ','0221 3591030'],
+  ['Instagram ','@aimargym'],
+  ['Av. 1 Nº 1362 esq. 60 ','La Plata'],
+  ['Si hay determinación','no hay límites'],
 ]
 
 const Ticker = () => {
@@ -19,7 +19,7 @@ const Ticker = () => {
       <div className="ticker__track">
         {items.map((item, i) => (
           <span className="ticker__item" key={i}>
-            {item}
+            <span className='p1'>{item[0]}</span><span className='p2'> · </span><span className='p3'>{item[1]}</span>
             <span className="ticker__sep">✦</span>
           </span>
         ))}
