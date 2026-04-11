@@ -1,33 +1,50 @@
 import './AboutUs.scss'
+import { useState } from 'react'
+import Modal from '../../UI/Modal/Modal'
 
-const AboutUs = () => (
-  <section className="about" id="nosotros">
-    <div className='bg-nosotros'></div>
-    <div className='SECTION-STANDAR '>
-      <div className='CONTAINER-STANDAR '>
-        <article className="about__content">
-          <p className="about__label">Quiénes somos</p>
-          <h2 className="about__title">Más que<br />un Gimnasio</h2>
-          <p className="about__text">
-            En Aimar creemos que cada persona tiene el potencial de superar
-            sus propios límites. Somos un espacio dedicado a acompañarte en
-            cada paso de tu proceso, desde el primer día hasta tus metas
-            más ambiciosas.
-          </p>
-          <p className="about__text">
-            Contamos con instalaciones modernas, equipamiento de primer nivel
-            y un equipo de profesores apasionados que diseñan y monitorean
-            tu progreso de forma personalizada.
-          </p>
-          <a href="#contacto" className="btn btn--primary">
-            Contactanos
-          </a>
-        </article>
+const AboutUs = () => {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <section className="about" id="nosotros">
+      <div className='bg-nosotros' />
+      <div className='SECTION-STANDAR '>
+        <div className='CONTAINER-STANDAR '>
+          <article className="about__content">
+            <div className='about-info'>
+              <p className="about__label">Quiénes somos</p>
+              <h2 className="about__title">Más que<br />un Gimnasio</h2>
+              <div className='about__parafos'>
+                <p className="about__text">
+                  En Aimar creemos que cada persona tiene el potencial de superar
+                  sus propios límites. Somos un espacio dedicado a acompañarte en
+                  cada paso de tu proceso, desde el primer día hasta tus metas
+                  más ambiciosas.
+                </p>
+                <p className="about__text">
+                  Contamos con instalaciones modernas, equipamiento de primer nivel
+                  y un equipo de profesores apasionados que diseñan y monitorean
+                  tu progreso de forma personalizada.
+                </p>
+                <a className="btn btn--primary" onClick={() => setOpen(true)}>
+                  leer mas
+                </a>
+              </div>
+
+            </div>
+
+          </article>
+        </div>
+      </div>
 
 
-        {/*
-          <img src='./images/gymbg.png' className='image-bg'/>
-          
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        title="TÍTULO"
+        subtitle="subtítulo opcional"
+      >
+        <article>
           <div className="about__visual">
             <div className="about__visual-main">
               <span className="about__visual-watermark">AIMAR</span>
@@ -38,13 +55,12 @@ const AboutUs = () => (
               </span>
             </div>
           </div>
-          */}
-      </div>
-    </div>
+        </article>
+      </Modal>
 
 
-
-  </section>
-)
+    </section>
+  )
+}
 
 export default AboutUs
