@@ -39,7 +39,7 @@ const IconValues = () => (
 
 const ITEMS = [
   {
-    num: '01',
+    num: 'MISION',
     icon: <IconMission />,
     title: 'Misión',
     content: (
@@ -51,7 +51,7 @@ const ITEMS = [
     ),
   },
   {
-    num: '02',
+    num: 'VISION',
     icon: <IconVision />,
     title: 'Visión',
     content: (
@@ -63,7 +63,7 @@ const ITEMS = [
     ),
   },
   {
-    num: '03',
+    num: 'VALORES',
     icon: <IconValues />,
     title: 'Valores',
     content: (
