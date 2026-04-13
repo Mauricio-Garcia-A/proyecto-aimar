@@ -12,7 +12,7 @@
     position: relative;
     z-index: 1;
     padding: 7rem 5%;
-    
+
   }
 
   .bg-services {
@@ -74,7 +74,7 @@
     color: $white;
   }
 
-  // ── Grid ──────────────────────────────────────────────
+// ── Grid ──────────────────────────────────────────────
   &__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -82,80 +82,168 @@
     background: rgba($gold, 0.1);
   }
 
-  // ── Card ──────────────────────────────────────────────
-  &__card {
-    background: rgba(0, 0, 0, 0.649);
+  @media (max-width: 768px) {
+    padding: 5rem 6%;
+  }
+}
+
+// ── Flip Card ─────────────────────────────────────────────
+.service-card {
+  perspective: 1000px;
+  cursor: pointer;
+  aspect-ratio: 1 / 1.05;
+  outline: none;
+
+  // ── Inner ───────────────────────────────────────────
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+
+  &--flipped &__inner {
+    transform: rotateY(180deg);
+  }
+
+  // ── Frente y reverso base ───────────────────────────
+  &__front,
+  &__back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+  }
+
+  // ── Frente ──────────────────────────────────────────
+  &__front {
+    background: rgb($dark, 0.65);
     backdrop-filter: blur(5px);
-    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: relative;
     overflow: hidden;
-    transition:
-      all 0.3s ease,
-      opacity 0.6s ease,
-      transform 0.6s ease;
+    height: 100%;
 
-    // Animación de entrada (scroll reveal)
-    opacity: 0;
-    transform: translateY(28px);
-
-    &--visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    &:hover {
-      background: #0e0e0ec3;
-    }
-
-    // Línea dorada inferior al hover
     &::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
       background: $gold;
       transition: width 0.4s ease;
     }
+  }
 
-    &:hover::after {
-      width: 100%;
+  &:hover &__front::after,
+  &--flipped &__front::after {
+    width: 100%;
+  }
+
+  &__badge {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    font-family: $font-condensed;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(white, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.5s;
+
+    svg {
+      width: 12px;
+      height: 12px;
     }
   }
 
-  &__card-icon {
-    display: block;
-    font-size: 2.4rem;
-    margin-bottom: 1.5rem;
+  &:hover &__badge {
+    color: rgba($gold, 0.6);
+  }
 
+  &__icon {
+    
+    display: block;
+    //margin-bottom: auto;
     svg {
       width: 100px;
     }
-
   }
 
-  &__card-name {
+  &__name {
     font-family: $font-display;
-    font-size: 1.9rem;
+    font-size: 1.5rem;
     letter-spacing: 0.05em;
     color: $gold;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+
+  &__hint {
+    font-family: $font-condensed;
+    font-size: 1rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba($gray, 0.7);
+  }
+
+  // ── Reverso ─────────────────────────────────────────
+  &__back {
+    background: rgb($gold, 0.5);
+    backdrop-filter: blur(5px);
+    transform: rotateY(180deg);
+    justify-content: space-between;
+  }
+
+  &__back-label {
+    font-family: $font-condensed;
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba($black, 0.4);
+  }
+
+  &__back-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__back-title {
+    font-family: $font-display;
+    font-size: 1.8rem;
+    letter-spacing: 0.03em;
+    color: $black;
+    line-height: 1.1;
     margin-bottom: 0.8rem;
   }
 
-  &__card-desc {
+  &__back-desc {
     font-family: $font-body;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
+    color: rgba($black, 0.65);
     line-height: 1.75;
-    color: $gray;
   }
 
-  // ── Responsive ────────────────────────────────────────
-  @media (max-width: 600px) {
-    padding: 5rem 6%;
+  &__back-close {
+    font-family: $font-condensed;
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba($black, 0.35);
+    transition: color 0.2s;
 
-    &__grid {
-      grid-template-columns: 1fr;
-    }
+    &:hover { color: rgba($black, 0.6); }
   }
 }
