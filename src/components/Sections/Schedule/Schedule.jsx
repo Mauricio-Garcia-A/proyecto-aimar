@@ -74,17 +74,29 @@ const Schedule = () => {
                 <div className="schedule__block">
                   <span className="schedule__block-icon"><IconTimeMusculacion /></span>
                   <div className="schedule__block-name">Musculación</div>
-                  <span className="schedule__block-badge">Ingreso libre</span>
+                  <div className='schedule__block-container-badge b1'>
+                    <span className='schedule__circle-badge'> </span>
+                    <span className="schedule__block-badge">Horario libre</span>
+                  </div>
+
                   <p className="schedule__block-hours">
                     <strong>Lun – Vie</strong> · 8:00 a 22:00 hs<br />
-                    <strong>Sábados</strong> · 9:00 a 12:00 hs
+                    <strong>Sábados</strong> · 9:00 a 12:00 hs<br />
+                  </p>
+                  <p className="schedule__block-hours">
+                    <span>--------------------------------</span><br />
+                    <strong>Feriados</strong> · 9:00 a 13:00 hs / CERRADO
                   </p>
                 </div>
 
                 <div className="schedule__block">
                   <span className="schedule__block-icon"><IconTimeClases /></span>
                   <div className="schedule__block-name">Clases grupales</div>
-                  <span className="schedule__block-badge">Con horario fijo</span>
+
+                  <div className='schedule__block-container-badge b2'>
+                    <span className='schedule__circle-badge'> </span>
+                    <span className="schedule__block-badge">Con horarios fijos</span>
+                  </div>
                   <p className="schedule__block-hours">
                     GAP · Judo · Boxeo<br />
                     Kickboxing · Funcional<br />
@@ -95,7 +107,10 @@ const Schedule = () => {
                 <div className="schedule__block">
                   <span className="schedule__block-icon"><IconTimeMasajes /></span>
                   <div className="schedule__block-name">Masajes</div>
-                  <span className="schedule__block-badge">A coordinar</span>
+                  <div className='schedule__block-container-badge b3'>
+                    <span className='schedule__circle-badge'> </span>
+                    <span className="schedule__block-badge">Turno a coordinar</span>
+                  </div>
                   <p className="schedule__block-hours">
                     Consultá disponibilidad<br />y reservá tu turno
                   </p>

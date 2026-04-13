@@ -2,7 +2,7 @@
 
 .container-horarios {
   background: $black;
-  background: linear-gradient(to bottom, #2a2828, $dark);
+  background: linear-gradient(to bottom, #24292d, $dark);
   //padding: 7rem 5%;
   position: relative;
 
@@ -33,7 +33,7 @@
 }
 
 .schedule {
- padding: 7rem 5%;
+  padding: 7rem 5%;
   position: relative;
 
 
@@ -80,12 +80,14 @@
   }
 
   &__block {
-    background: $dark;
+    background: rgb($dark, 0.2);
+    backdrop-filter: blur(10px);
+
     padding: 2.5rem 2rem;
     position: relative;
     overflow: hidden;
-    transition: background 0.3s;
-
+    //transition: background 0.3s;
+    /*
     &:hover {
       background: $dark2;
     }
@@ -103,7 +105,7 @@
 
     &:hover::after {
       width: 100%;
-    }
+    }*/
   }
 
   &__block-icon {
@@ -126,17 +128,84 @@
     margin-bottom: 0.6rem;
   }
 
+  $color-b1: rgba(0, 167, 67, 0.885);
+  $color-b2: rgba(100, 5, 208, 0.9);
+  $color-b3: rgba(255, 85, 0, 0.84);
+
+  &__block-container-badge {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    padding-left: 15px;
+    align-items: center;
+    gap: 5px;
+    width: 200px;
+    border-radius: 100px;
+
+    &.b1 {
+      border: 1px $color-b1 solid;
+      background: rgb($color-b1, 0.05);
+      filter: drop-shadow(1px 1px 6px rgb($color-b1, 0.9));
+      .schedule__circle-badge {
+        background: $color-b1;
+      }
+
+      .schedule__block-badge {
+        color: $color-b1;
+      }
+    }
+
+    &.b2 {
+      border: 1px $color-b2 solid;
+      background: rgb($color-b2, 0.05);
+      filter: drop-shadow(1px 1px 6px rgb($color-b2, 0.9));
+
+      .schedule__circle-badge {
+        background: $color-b2;
+      }
+
+      .schedule__block-badge {
+        color: $color-b2;
+      }
+    }
+
+    &.b3 {
+      border: 1px $color-b3 solid;
+      background: rgb($color-b3, 0.05);
+      filter: drop-shadow(1px 1px 6px rgb($color-b3, 0.05));
+
+      .schedule__circle-badge {
+        background: $color-b3;
+      }
+
+      .schedule__block-badge {
+        color: $color-b3;
+      }
+    }
+
+  }
+
+  &__circle-badge {
+    // background: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+
+  }
+
   &__block-badge {
     display: inline-block;
-    font-family: $font-condensed;
+    //font-family: $font-condensed;
     font-weight: 700;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    background: $gold;
-    color: $black;
-    padding: 2px 10px;
-    margin-bottom: 1.2rem;
+    //background: $gold;
+    //color: green;
+    padding: 10px;
+
   }
 
   &__block-hours {
