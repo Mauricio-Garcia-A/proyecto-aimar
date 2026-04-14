@@ -1,34 +1,41 @@
 @use '../../../styles/variables' as *;
 
+.container-products {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .products {
   background: linear-gradient(to bottom, rgb(130, 130, 130), rgb(255, 255, 255));
-  //background: $black;
-
-  //padding: 5rem 5%;
   position: relative;
   overflow: hidden;
-  //border-top: 1px solid rgba($gold, 0.15);
-  //border-top: 1px solid rgba($gold, 0.15);
-  //border-bottom: 1px solid rgba($gold, 0.15);
-
-
 
   // ── Header ────────────────────────────────────────────
   &__header {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    //margin-bottom: 2rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
 
   &__label {
     font-family: $font-condensed;
     font-weight: 600;
-    font-size: 0.78rem;
-    letter-spacing: 0.35em;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgb(255, 68, 0);
-    margin-bottom: 0.8rem;
+    color: $gold;
+    filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.771));
+    text-align: center;
+    @media (max-width: 400px) {
+      font-size: 0.8rem;
+    }
+
+
   }
 
   &__title {
@@ -36,19 +43,26 @@
     font-size: clamp(2.8rem, 5.5vw, 5rem);
     line-height: 1;
     color: $white;
+
   }
 
   // ── Arrows ────────────────────────────────────────────
   &__arrows {
     display: flex;
-    gap: 8px;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 18px;
     padding-bottom: 6px;
+
   }
 
   &__arrow {
-    width: 44px;
+    width: 54px;
     height: 44px;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.304);
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.697));
+
     border: 1px solid rgba($gold, 0.3);
     color: $gold;
     font-size: 1.1rem;
@@ -57,42 +71,90 @@
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
+    padding: 8px;
 
-    &:hover { background: rgba($gold, 0.1); border-color: $gold; }
+    .right {
+      transform: rotate(180deg);
+    }
+
+    svg {
+      fill: $gold;
+      width: 2rem;
+      filter: drop-shadow(1px 1px 1px rgba(174, 143, 2, 0.697));
+
+    }
+
+    &:hover {
+      background: rgba($gold, 0.25);
+      border-color: $gold;
+    }
 
     &--disabled {
       opacity: 0.25;
       cursor: not-allowed;
-      &:hover { background: transparent; border-color: rgba($gold, 0.3); }
+
+      &:hover {
+        background: transparent;
+        border-color: rgba($gold, 0.3);
+      }
     }
   }
 
   // ── Carrusel ──────────────────────────────────────────
+  $CARD_WIDTH: 180px;
+  $CARD_GAP: 100px;
+
   &__wrap {
-    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth; // ← esto faltaba
+    -webkit-overflow-scrolling: touch;
+    width: calc(($CARD_WIDTH + $CARD_GAP) * 5 - $CARD_GAP);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    @media (max-width: 1400px) {
+      width: calc(($CARD_WIDTH + $CARD_GAP) * 4 - $CARD_GAP);
+    }
+
+    @media (max-width: 1150px) {
+      width: calc(($CARD_WIDTH + $CARD_GAP) * 3 - $CARD_GAP);
+    }
+
+    @media (max-width: 850px) {
+      width: calc(($CARD_WIDTH + $CARD_GAP) * 2 - $CARD_GAP);
+    }
+
+    @media (max-width: 500px) {
+      width: calc(($CARD_WIDTH + $CARD_GAP) * 1 - $CARD_GAP);
+    }
   }
 
   &__track {
     display: flex;
-    gap: 100px;
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
+    gap: $CARD_GAP;
+    width: max-content; // ← permite que el track sea más ancho que el wrap
   }
 
   // ── Card ──────────────────────────────────────────────
   &__card {
-    flex: 0 0 180px;
-    //background: $black;
+    flex: 0 0 $CARD_WIDTH;
     border: 1px solid rgba($gold, 0.06);
     user-select: none;
     pointer-events: none;
+    scroll-snap-align: start;
   }
 
   // ── Imagen ────────────────────────────────────────────
   &__img-wrap {
     width: 100%;
     aspect-ratio: 1 / 1;
-   // background: $black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,32 +186,31 @@
   &__info {
     padding: 0.9rem 1rem 1.1rem;
     border-top: 1px solid rgba($gold, 0.1);
+    text-align: center;
   }
 
   &__name {
     font-family: $font-body;
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: rgb(44, 44, 44);
-    margin-bottom: 0.2rem;
+    font-size: 1rem;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.916);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-            filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.534));
-
+    text-transform: uppercase;
+    filter: drop-shadow(1px 1px 2px rgba(120, 91, 4, 0.888));
   }
 
   &__category {
     font-family: $font-condensed;
     font-weight: 600;
-    font-size: 0.68rem;
+    font-size: 0.8rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: orangered;
+    color: rgb(224, 59, 4);
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.534));
+
   }
 
-  // ── Responsive ────────────────────────────────────────
-  @media (max-width: 768px) {
-    padding: 4rem 6%;
-  }
+
 }
