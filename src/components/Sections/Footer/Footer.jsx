@@ -1,4 +1,6 @@
-import Logo from '../../Logos/Logo'
+import LogoSinRotulo from '../../Logos/LogoSinRotulo'
+import LogoMAG from '../../Logos/LogoMAG'
+
 import './Footer.scss'
 
 const Footer = () => (
@@ -7,13 +9,13 @@ const Footer = () => (
     <div className="footer__top">
       <div className="footer__brand">
         <div className='footer__logo'>
-          <Logo />
+          <LogoSinRotulo />
         </div>
         <p className="footer__slogan">
           Si hay determinación, no hay límites.
         </p>
       </div>
-
+      {/*
       <div className="footer__links">
         <p className="footer__links-title">Navegación</p>
         <ul>
@@ -54,15 +56,20 @@ const Footer = () => (
           <li>9:00 a 12:00 hs</li>
         </ul>
       </div>
+      */}
     </div>
+    
 
     <div className="footer__bottom">
       <p className="footer__copy">
-        © {new Date().getFullYear()} Aimar Centro de Entrenamiento · Av. 1 Nº 1362 esq. 60, La Plata
+        © {new Date().getFullYear()} Aimar Centro de Entrenamiento 
       </p>
       <p className="footer__copy">
-        Todos los derechos reservados
+        Todos los derechos reservados | Sitio creado por <a href='#' className='linkMAG'>M.A.G</a> 
       </p>
+      <div className='container-logo-mag'>
+        <LogoMAG />
+      </div>
     </div>
 
   </footer>
