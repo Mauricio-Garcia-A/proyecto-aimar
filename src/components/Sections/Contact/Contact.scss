@@ -4,6 +4,20 @@
   background: $black;
   background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(245, 197, 24, 0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(245, 197, 24, 0.05) 0%, transparent 60%), linear-gradient(160deg, #0f0f0fc4 0%, #0a0a0a3f 100%);
   position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0; // equivale a top: 0; right: 0; bottom: 0; left: 0;
+    background-image: url("/images/bg-1.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: top center;
+    opacity: 0.08; // ajustá la intensidad
+    z-index: 0;
+    pointer-events: none;
+
+  }
 }
 
 .contact {
@@ -14,9 +28,27 @@
   &::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 1px;
     background: linear-gradient(to right, transparent, $gold, transparent);
+  }
+
+  .leaflet-control-zoom-in {
+    opacity: 0.2;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .leaflet-control-zoom-out {
+    opacity: 0.2;
+
+    &:hover {
+      opacity: 0.5;
+    }
   }
 
   // ── Header ────────────────────────────────────────────
@@ -27,11 +59,13 @@
   &__label {
     font-family: $font-condensed;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 1rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: $gold;
     margin-bottom: 1rem;
+    filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.799));
+
   }
 
   &__title {
@@ -43,16 +77,40 @@
   }
 
   // ── Grid ──────────────────────────────────────────────
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
+  &__container {
+    display: flex;
+    flex-flow: row-reverse;
+    gap: 3rem;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 911px) {
+      flex-flow: column;
+      align-items: flex-start;
+      gap: 2rem;
+
+      &__list {
+        
+        width: 100%;
+        // max-width: 400px;
+      }
+
+    }
   }
 
   // ── List ──────────────────────────────────────────────
   &__list {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 35%;
+    // max-width: 400px;
+  }
+
+  &__map {
+    width: 100%;
+    max-width: 550px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -77,6 +135,8 @@
 
     svg {
       fill: $gold;
+      filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.799));
+
     }
   }
 
@@ -89,10 +149,12 @@
   &__info-label {
     font-family: $font-condensed;
     font-weight: 600;
-    font-size: 0.75rem;
+    font-size: 1rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: $gold;
+    filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.799));
+
     a {
       text-decoration: none;
     }
@@ -102,7 +164,7 @@
     font-family: $font-body;
     font-size: 1rem;
     color: $white;
-    
+
 
     &--link {
       text-decoration: none;
@@ -128,7 +190,7 @@
 
     img {
       position: absolute;
-      top:-170px;
+      top: -170px;
       left: -100px;
 
     }

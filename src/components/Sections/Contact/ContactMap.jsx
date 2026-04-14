@@ -34,9 +34,9 @@ const ContactMap = () => (
     <MapContainer
       center={POSITION}
       zoom={16}
-      scrollWheelZoom={true}
+      scrollWheelZoom={false}
       className="contact-map__container"
-      zoomControl={false}
+      zoomControl={true}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
