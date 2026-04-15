@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import './Staff.scss'
+import { Arrow, IconPause, IconPlay } from '../../Icons/Icons'
 
 const STAFF = [
   { initials: 'MA', name: 'Marcelo Aimar', role: 'Director · Fundador', spec: 'Musculación y fuerza', srl: './images/staff/profe1.png' },
@@ -150,7 +151,10 @@ const Staff = () => {
   return (
     <section className='container-staff' id="staff">
       <div className='bg-staff'>
-        <img src='./images/bg-staff.png' />
+        <div className='divTop' />
+        <div className='divBottom' />
+        
+        <img src='./images/bg-staff-3.png' />
       </div>
 
       <div className='SECTION-STANDAR '>
@@ -162,15 +166,16 @@ const Staff = () => {
                 <h2 className="staff__title">El Staff</h2>
               </div>
               <div className="staff__controls">
-                <button className="staff__arrow" onClick={goPrev} aria-label="Anterior">&#8592;</button>
-                <button className="staff__arrow" onClick={goNext} aria-label="Siguiente">&#8594;</button>
+                <button className="staff__arrow" onClick={goPrev} aria-label="Anterior"><Arrow className='right' /></button>
+                <button className="staff__arrow" onClick={goNext} aria-label="Siguiente"><Arrow /></button>
+
                 <div className="staff__sep" />
                 <button
                   className={`staff__pause${paused ? ' staff__pause--paused' : ''}`}
                   onClick={togglePause}
                   aria-label={paused ? 'Reanudar' : 'Pausar'}
                 >
-                  {paused ? '▶' : '⏸'}
+                  {paused ? <IconPlay /> : <IconPause />}
                 </button>
               </div>
             </div>
