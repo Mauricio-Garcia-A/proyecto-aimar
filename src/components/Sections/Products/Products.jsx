@@ -13,7 +13,8 @@ const PRODUCTS = [
   { name: 'Guantes', category: 'Equipamiento', img: './images/products/Guantes.png' },
 ]
 
-const SCROLL_AMOUNT = 2
+// Cantidad de Cards que se desplazan al hacer clip en los botones
+const SCROLL_AMOUNT = 1
 
 const Products = () => {
   const wrapRef = useRef(null)
