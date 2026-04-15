@@ -1,12 +1,12 @@
 import './Sponsors.scss'
 
 const SPONSORS = [
-  { name: 'SportNutrition',   img: null },
-  { name: 'MedicalGroup',     img: null },
-  { name: 'FitStore',         img: null },
-  { name: 'ProSupps',         img: null },
-  { name: 'ActiveWear',       img: null },
-  { name: 'Farmacia Central', img: null },
+  { name: 'Gatorade',   img: './images/sponsors/gatorade.png' },
+  { name: 'integra',     img: './images/sponsors/integra.png' },
+  { name: 'Adidas',         img: './images/sponsors/adidas.png' },
+  { name: 'Integra',         img: './images/sponsors/integra.png' },
+  { name: 'Powerade',       img: './images/sponsors/powerade.png' },
+  { name: 'Interval', img: './images/sponsors/interval.png' },
 ]
 
 // eslint-disable-next-line react/prop-types
@@ -30,6 +30,7 @@ const Sponsors = () => {
     <div className="sponsors" aria-label="Sponsors y partners">
 
       <div className="sponsors__header">
+        <div className="sponsors__line" />
         <span className="sponsors__label">Sponsors &amp; Partners</span>
         <div className="sponsors__line" />
       </div>

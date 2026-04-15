@@ -4,8 +4,8 @@
   background: #161616;
   background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(130, 130, 130));
   padding: 2rem 0;
-  border-top: 1px solid rgba($gold, 0.08);
-  border-bottom: 1px solid rgba($gold, 0.08);
+  //border-top: 1px solid rgba($gold, 0.08);
+  //border-bottom: 1px solid rgba($gold, 0.08);
   overflow: hidden;
 
   // ── Header ────────────────────────────────────────────
@@ -19,17 +19,19 @@
   &__label {
     font-family: $font-condensed;
     font-weight: 600;
-    font-size: 0.68rem;
+    font-size: 1rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba($gray, 0.4);
+    color: rgba($gold, 1);
     white-space: nowrap;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.799));
+
   }
 
   &__line {
     flex: 1;
     height: 1px;
-    background: rgba($gold, 0.08);
+    background: rgba($black, 0.2);
   }
 
   // ── Track ─────────────────────────────────────────────
@@ -52,6 +54,7 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    cursor: pointer;
   }
 
   &__logo {
@@ -60,7 +63,7 @@
     align-items: center;
     justify-content: center;
     opacity: 0.3;
-    filter: grayscale(1) brightness(1.8);
+    filter: grayscale(0.1) brightness(2);
     transition: opacity 0.3s ease, filter 0.3s ease;
 
     &:hover {
@@ -75,6 +78,8 @@
     width: auto;
     object-fit: contain;
     display: block;
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.799));
+
   }
 
   // ── Placeholder (sin imagen) ──────────────────────────
@@ -90,9 +95,9 @@
 
   // ── Separador ─────────────────────────────────────────
   &__sep {
-    width: 1px;
+    width: 2px;
     height: 24px;
-    background: rgba($gold, 0.1);
+    background: rgba(rgb(201, 118, 2), 0.3);
     flex-shrink: 0;
   }
 
