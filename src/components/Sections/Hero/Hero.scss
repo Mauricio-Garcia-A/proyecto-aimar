@@ -74,19 +74,19 @@ $MarginTopNavbar: 100px;
   // Stagger animations on mount
   .--visible {
     .hero__tag {
-      animation: fadeUp 0.8s 0.2s forwards;
+      animation: fadeUp 2s 2.2s forwards;
     }
 
     .hero__logo {
-      animation: fadeUp 0.8s 0.35s forwards;
+      animation: fadeUp 2s 2.35s forwards;
     }
 
     .hero__sub {
-      animation: fadeUp 0.8s 0.5s forwards;
+      animation: fadeUp 2s 2.5s forwards;
     }
 
     .hero__slogan {
-      animation: fadeUp 0.8s 0.65s forwards;
+      animation: fadeUp 2s 2.65s forwards;
     }
   }
 

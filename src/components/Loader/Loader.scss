@@ -1,0 +1,80 @@
+@use '../../styles/variables' as *;
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(60, 58, 58, 0.323);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+
+  &--hiding {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  // ── Content ───────────────────────────────────────────
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  // ── Logo ──────────────────────────────────────────────
+  &__logo {
+    width: min(280px, 70vw);
+    animation: loaderPulse 1.5s ease-in-out infinite;
+
+    svg {
+      width: 100%;
+      height: auto;
+      fill: $gold;
+      filter: drop-shadow(1px 1px 5px rgba(rgba(116, 116, 116, 0.553), 0.4));
+    }
+  }
+
+  // ── Barra de progreso ─────────────────────────────────
+  &__bar {
+    width: min(280px, 70vw);
+    height: 2px;
+    background: rgba($gold, 0.15);
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    background: $gold;
+    animation: loaderProgress 1.5s ease-in-out forwards;
+    box-shadow: 0 0 10px rgba($gold, 0.5);
+  }
+
+  // ── Texto ─────────────────────────────────────────────
+  &__text {
+    font-family: $font-condensed;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba($gold, 0.4);
+    animation: loaderFade 1.5s ease-in-out infinite;
+  }
+
+  // ── Animaciones ───────────────────────────────────────
+  @keyframes loaderPulse {
+    0%, 100% { opacity: 1;   transform: scale(1);    }
+    50%       { opacity: 0.7; transform: scale(0.97); }
+  }
+
+  @keyframes loaderProgress {
+    from { width: 0%;    }
+    to   { width: 100%;  }
+  }
+
+  @keyframes loaderFade {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 0.8; }
+  }
+}
