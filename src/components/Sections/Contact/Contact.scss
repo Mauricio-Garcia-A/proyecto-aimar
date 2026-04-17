@@ -25,6 +25,21 @@
   padding: 7rem 5%;
   position: relative;
 
+  // Stagger animations on mount
+  &.--visible {
+    .contact__label {
+      animation: fadeUp 2s 0.5s forwards;
+    }
+
+    .contact__title {
+      animation: fadeUp 2s 0.8s forwards;
+    }
+
+    .contact__container {
+      animation: fadeUp 2s 1s forwards;
+    }
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -66,6 +81,7 @@
     margin-bottom: 1rem;
     filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.799));
 
+    opacity: 0;
   }
 
   &__title {
@@ -74,6 +90,8 @@
     line-height: 1;
     letter-spacing: 0.03em;
     color: $white;
+
+    opacity: 0;
   }
 
   // ── Grid ──────────────────────────────────────────────
@@ -84,13 +102,15 @@
     align-items: center;
     justify-content: space-between;
 
+    opacity: 0;
+
     @media (max-width: 911px) {
       flex-flow: column;
       align-items: flex-start;
       gap: 2rem;
 
       &__list {
-        
+
         width: 100%;
         // max-width: 400px;
       }
@@ -216,5 +236,18 @@
       grid-template-columns: 1fr;
       gap: 3rem;
     }
+  }
+}
+
+// ── Animación ─────────────────────────────────────────────
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

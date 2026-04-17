@@ -72,7 +72,10 @@ $MarginTopNavbar: 100px;
   padding-bottom: 30px;
 
   // Stagger animations on mount
-  .--visible {
+  &.--visible {
+     .hero-redes-sociales {
+      animation: fadeLeft 2s 2.2s forwards;
+    }
     .hero__tag {
       animation: fadeUp 2s 2.2s forwards;
     }
@@ -88,6 +91,10 @@ $MarginTopNavbar: 100px;
     .hero__slogan {
       animation: fadeUp 2s 2.65s forwards;
     }
+
+    .container-button-arrows {
+       animation: fadeUp 2s 3s forwards;
+    }
   }
 
   // ── Botones Redes Sociales ─────────────────────────────────────────────
@@ -100,6 +107,8 @@ $MarginTopNavbar: 100px;
     align-items: center;
     gap: 15px;
     padding-right: 20px;
+
+    opacity: 0;
     a {
 
       svg {
@@ -217,7 +226,7 @@ $MarginTopNavbar: 100px;
   flex-direction: row;
   gap: 15px;
   align-items: center;
-
+  opacity: 0;
   .right {
     transform: rotate(180deg);
   }
@@ -240,5 +249,16 @@ $MarginTopNavbar: 100px;
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

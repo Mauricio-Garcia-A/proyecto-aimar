@@ -5,24 +5,35 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-position: relative;
+  position: relative;
 
   &::before {
     content: "";
     position: absolute;
     inset: 0; // equivale a top: 0; right: 0; bottom: 0; left: 0;
     background-image: url("/images/bg-products.png");
-    background-size:auto;
+    background-size: auto;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: 40px;
     opacity: 0.15; // ajustá la intensidad
     z-index: 0;
     pointer-events: none;
-    
 
   }
-  
+
+    // Stagger animations on mount
+  &.--visible {
+    .products__header {
+      animation: fadeTop 0.8s 1s forwards;
+    }
+
+    .products__wrap {
+      animation: fadeTop 0.8s 0.5s forwards;
+    }
+
+  }
+
 }
 
 .products {
@@ -39,7 +50,7 @@ position: relative;
     width: 100%;
     margin-bottom: 1.5rem;
 
-    
+    opacity: 0;
   }
 
   &__label {
@@ -51,6 +62,7 @@ position: relative;
     color: $gold;
     filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.771));
     text-align: center;
+
     @media (max-width: 400px) {
       font-size: 0.8rem;
     }
@@ -131,10 +143,12 @@ position: relative;
     scroll-behavior: smooth; // ← esto faltaba
     -webkit-overflow-scrolling: touch;
     width: calc(($CARD_WIDTH + $CARD_GAP) * 5 - $CARD_GAP);
-    
-  
+
+
     position: relative;
     z-index: 1;
+
+    opacity: 0;
 
 
     &::-webkit-scrollbar {
@@ -165,9 +179,9 @@ position: relative;
     display: flex;
     gap: $CARD_GAP;
     width: max-content; // ← permite que el track sea más ancho que el wrap
-    
-   
-  
+
+
+
   }
 
   // ── Card ──────────────────────────────────────────────
@@ -236,7 +250,7 @@ position: relative;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: rgb(224, 59, 4);
-        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.534));
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.534));
 
   }
 

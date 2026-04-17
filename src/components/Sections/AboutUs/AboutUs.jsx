@@ -1,9 +1,34 @@
 import './AboutUs.scss'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Modal from '../../UI/Modal/Modal'
 
 const AboutUs = () => {
   const [open, setOpen] = useState(false)
+  const aboutRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false) // Estado para la animación
+
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Si el elemento entra en pantalla, activamos la animación
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Opcional: dejar de observar una vez que ya se vio
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.2, // Se activa cuando el 20% de la sección es visible
+      }
+    );
+
+    if (aboutRef.current) {
+      observer.observe(aboutRef.current);
+    }
+
+    return () => observer.disconnect(); // Limpieza al desmontar
+  }, []);
 
   return (
     <section className="about" id="nosotros">
@@ -11,7 +36,7 @@ const AboutUs = () => {
       <div className='SECTION-STANDAR '>
         <div className='CONTAINER-STANDAR '>
           <article className="about__content">
-            <div className='about-info'>
+            <div className={`about-info ${isVisible ? '--visible' : ''}`} ref={aboutRef}>
               <p className="about__label">Quiénes somos</p>
               <h2 className="about__title">Más que<br />un Gimnasio</h2>
               <div className='about__parafos'>

@@ -21,7 +21,7 @@ export default function Hero() {
         <div className="hero-watermark">+GYM</div>
         <div className='SECTION-STANDAR '>
           <div className='CONTAINER-STANDAR '>
-            <article className='container-hero' >
+            <article className='container-hero'  ref={heroRef}>
               <div className='hero-redes-sociales'>
                 <a> <IconInstagram /> </a>
                 <a> <IconFacebook /> </a>
@@ -29,7 +29,7 @@ export default function Hero() {
                 <a> <IconYoutube /> </a>
               </div>
 
-              <div className="hero__info" ref={heroRef}>
+              <div className="hero__info">
                 <p className="hero__tag">La Plata · Buenos Aires · Argentina</p>
                 <div className='hero__logo'><Logo /></div>
                 <p className="hero__sub">Musculación · Funcional · Masajes</p>

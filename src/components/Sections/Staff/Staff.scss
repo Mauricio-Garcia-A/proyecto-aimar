@@ -24,6 +24,34 @@
 
   }
 
+  // Stagger animations on mount
+  & .--visible {
+    .staff__label {
+      animation: fadeUp 2s 0.5s forwards;
+    }
+
+    .staff__title {
+      animation: fadeUp 2s 0.8s forwards;
+    }
+
+    .staff__controls {
+      animation: fadeUp 2s 1s forwards;
+    }
+
+    .staff__wrap {
+      animation: fadeUp 2s 1.2s forwards;
+    }
+
+    .staff__dots {
+      animation: fadeUp 2s 1.5s forwards;
+    }
+
+    .staff__progress-bar {
+      animation: fadeUp 2s 1.5s forwards;
+    }
+  }
+
+
 
   .bg-staff {
     width: 100%;
@@ -98,6 +126,7 @@
     margin-bottom: 0.8rem;
     filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.799));
 
+    opacity: 0;
   }
 
   &__title {
@@ -109,6 +138,7 @@
     -webkit-text-stroke-color: rgba(0, 0, 0, 0.445);
     filter: drop-shadow(3px 3px 2px rgba(19, 8, 0, 0.745));
 
+    opacity: 0;
   }
 
   // ── Controls ──────────────────────────────────────────
@@ -121,6 +151,8 @@
     padding-right: 6%;
     flex-direction: row;
     justify-content: flex-end;
+
+    opacity: 0;
   }
 
   &__arrow,
@@ -184,6 +216,8 @@
   &__wrap {
     overflow: hidden;
     cursor: grab;
+
+    opacity: 0;
 
     &:active {
       cursor: grabbing;
@@ -322,6 +356,8 @@
     gap: 6px;
     justify-content: center;
     margin-top: 1.5rem;
+
+    opacity: 0;
   }
 
   &__dot {
@@ -345,6 +381,8 @@
     background: rgba($gold, 0.08);
     margin-top: 10px;
     overflow: hidden;
+    
+    opacity: 0;
   }
 
   &__progress {
@@ -376,5 +414,17 @@
     &__card {
       flex-basis: calc(100% - 0px);
     }
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

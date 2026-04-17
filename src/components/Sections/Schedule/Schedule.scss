@@ -48,6 +48,26 @@
     //background: linear-gradient(to right, transparent, $gold, transparent);
   }
 
+  &.--visible {
+        .schedule__label {
+          animation: fadeUp 2s 0.5s forwards;
+        }
+
+        .schedule__title {
+          animation: fadeUp 2s 0.8s forwards;
+        }
+
+        .schedule__blocks {
+          animation: fadeUp 2s 1s forwards;
+        }
+        .container-horarios-clases {
+          animation: fadeUp 2s 1.3s forwards;
+        }
+      }
+
+  .container-horarios-clases {
+    opacity: 0;
+  }
   // ── Header ────────────────────────────────────────────
   &__header {
     margin-bottom: 3.5rem;
@@ -61,6 +81,8 @@
     text-transform: uppercase;
     color: $gold;
     margin-bottom: 0.8rem;
+
+    opacity: 0;
   }
 
   &__title {
@@ -68,6 +90,8 @@
     font-size: clamp(2.8rem, 5.5vw, 5rem);
     line-height: 1;
     color: $white;
+
+    opacity: 0;
   }
 
   // ── Bloques ───────────────────────────────────────────
@@ -77,6 +101,8 @@
     gap: 1.5px;
     //background: rgba($gold, 0.1);
     margin-bottom: 4rem;
+
+    opacity: 0;
   }
 
   &__block {
@@ -581,5 +607,18 @@
     &__mobile {
       display: block;
     }
+  }
+}
+
+// ── Animación ─────────────────────────────────────────────
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -16,7 +16,7 @@
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  
+
   /*
   .image-bg {
     opacity: 0.1;
@@ -35,15 +35,19 @@
     width: 100%;
     height: 100%;
     background-image: url("/images/gymbg-3.png");
-    background-size:cover;        /* Hace que cubra todo el div */
-    background-position-x: right;   /* Centra la imagen */
-    background-repeat: no-repeat;  /* Evita que se repita */
-    background-position-y: 10px;   /* Centra la imagen */
-    background-position-x: right; 
+    background-size: cover;
+    /* Hace que cubra todo el div */
+    background-position-x: right;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* Evita que se repita */
+    background-position-y: 10px;
+    /* Centra la imagen */
+    background-position-x: right;
 
     transition: all ease 1s;
   }
-  
+
   // ── Visual ────────────────────────────────────────────
   &__visual {
     position: relative;
@@ -93,7 +97,7 @@
 
   // ── Content ───────────────────────────────────────────
   &__content {
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -101,12 +105,28 @@
     gap: 0;
     z-index: 1;
     padding: 7rem 5%;
-     //background: rgba(255, 0, 0, 0.348); 
-     
-     .about-info {
+    //background: rgba(255, 0, 0, 0.348); 
+
+    .about-info {
       width: 100%;
       max-width: 750px;
-     }
+
+      // Stagger animations on mount
+      &.--visible {
+        .about__label {
+          animation: fadeUp 2s 0.5s forwards;
+        }
+
+        .about__title {
+          animation: fadeUp 2s 0.8s forwards;
+        }
+
+        .about__parafos {
+          animation: fadeUp 2s 1s forwards;
+        }
+      }
+
+    }
 
   }
 
@@ -119,6 +139,8 @@
     color: $gold;
     margin-bottom: 1rem;
     filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.799));
+  
+    opacity: 0;
   }
 
   &__title {
@@ -129,6 +151,7 @@
     color: $white;
     margin-bottom: 2rem;
     filter: drop-shadow(3px 3px 1px rgba(19, 8, 0, 0.758));
+    opacity: 0;
   }
 
   &__text {
@@ -139,17 +162,18 @@
     margin-bottom: 1.5rem;
     filter: drop-shadow(3px 3px 1px rgb(0, 0, 0));
   }
+
   &__parafos {
     background: rgba(0, 0, 0, 0.073);
     backdrop-filter: blur(5px);
     padding: 20px;
-    border: 1px solid rgb($gold,0.3);
+    border: 1px solid rgb($gold, 0.3);
     height: 100%;
     min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    opacity: 0;
   }
 
 
@@ -166,10 +190,25 @@
       bottom: -1rem;
       right: -1rem;
     }
+
     .bg-nosotros {
-     background-position-x: 100px;   /* Centra la imagen */
+      background-position-x: 100px;
+      /* Centra la imagen */
       background-position-y: 0px;
-    } 
-   
+    }
+
+  }
+}
+
+// ── Animación ─────────────────────────────────────────────
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

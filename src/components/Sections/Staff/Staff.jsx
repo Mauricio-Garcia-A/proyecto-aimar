@@ -148,18 +148,45 @@ const Staff = () => {
   // ── Dot activo ────────────────────────────────────────
   const activeDot = ((current - visible) % STAFF.length + STAFF.length) % STAFF.length
 
+  // ── Animacion al pricipio ────────────────────────────
+  const staffRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false) // Estado para la animación
+
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Si el elemento entra en pantalla, activamos la animación
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Opcional: dejar de observar una vez que ya se vio
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.2, // Se activa cuando el 20% de la sección es visible
+      }
+    );
+
+    if (staffRef.current) {
+      observer.observe(staffRef.current);
+    }
+
+    return () => observer.disconnect(); // Limpieza al desmontar
+  }, []);
+
   return (
     <section className='container-staff' id="staff">
       <div className='bg-staff'>
         <div className='divTop' />
         <div className='divBottom' />
-        
+
         <img src='./images/bg-staff-3.png' />
       </div>
 
       <div className='SECTION-STANDAR '>
         <div className='CONTAINER-STANDAR '>
-          <article className="staff" >
+          <article className={`staff ${isVisible ? '--visible' : ''}`} ref={staffRef}>
             <div className="staff__header">
               <div>
                 <p className="staff__label">Nuestro equipo</p>

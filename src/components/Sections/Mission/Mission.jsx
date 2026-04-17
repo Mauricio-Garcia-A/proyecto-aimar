@@ -1,28 +1,29 @@
+import { useEffect, useRef, useState } from 'react'
 import './Mission.scss'
 
 const IconMission = () => (
   <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="20" cy="20" r="10" stroke="#F5C518" strokeWidth="1.2"/>
-    <circle cx="20" cy="20" r="3" fill="#F5C518"/>
-    <line x1="20" y1="4"  x2="20" y2="10" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round"/>
-    <line x1="20" y1="30" x2="20" y2="36" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round"/>
-    <line x1="4"  y1="20" x2="10" y2="20" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round"/>
-    <line x1="30" y1="20" x2="36" y2="20" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round"/>
-    <line x1="8.7"  y1="8.7"  x2="13" y2="13"   stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round"/>
-    <line x1="27"   y1="27"   x2="31.3" y2="31.3" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round"/>
-    <line x1="31.3" y1="8.7"  x2="27" y2="13"    stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round"/>
-    <line x1="13"   y1="27"   x2="8.7" y2="31.3"  stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round"/>
+    <circle cx="20" cy="20" r="10" stroke="#F5C518" strokeWidth="1.2" />
+    <circle cx="20" cy="20" r="3" fill="#F5C518" />
+    <line x1="20" y1="4" x2="20" y2="10" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round" />
+    <line x1="20" y1="30" x2="20" y2="36" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round" />
+    <line x1="4" y1="20" x2="10" y2="20" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round" />
+    <line x1="30" y1="20" x2="36" y2="20" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round" />
+    <line x1="8.7" y1="8.7" x2="13" y2="13" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round" />
+    <line x1="27" y1="27" x2="31.3" y2="31.3" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round" />
+    <line x1="31.3" y1="8.7" x2="27" y2="13" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round" />
+    <line x1="13" y1="27" x2="8.7" y2="31.3" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round" />
   </svg>
 )
 
 const IconVision = () => (
   <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="20" cy="20" r="13" stroke="#F5C518" strokeWidth="1.2"/>
-    <circle cx="20" cy="20" r="7"  stroke="#F5C518" strokeWidth="1.2" strokeDasharray="2 2"/>
-    <circle cx="20" cy="20" r="2"  fill="#F5C518"/>
-    <circle cx="30" cy="10" r="2"  fill="#F5C518"/>
-    <path d="M20 20 L20 6"  stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round"/>
-    <path d="M20 20 L30 10" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round"/>
+    <circle cx="20" cy="20" r="13" stroke="#F5C518" strokeWidth="1.2" />
+    <circle cx="20" cy="20" r="7" stroke="#F5C518" strokeWidth="1.2" strokeDasharray="2 2" />
+    <circle cx="20" cy="20" r="2" fill="#F5C518" />
+    <circle cx="30" cy="10" r="2" fill="#F5C518" />
+    <path d="M20 20 L20 6" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round" />
+    <path d="M20 20 L30 10" stroke="#F5C518" strokeWidth="1.2" strokeLinecap="round" />
   </svg>
 )
 
@@ -70,9 +71,9 @@ const ITEMS = [
       <ul className="mission__values">
         {[
           { name: 'Determinación', desc: 'no hay límites para quien persiste' },
-          { name: 'Compromiso',    desc: 'con cada alumno y su proceso individual' },
-          { name: 'Excelencia',    desc: 'en la enseñanza y en las instalaciones' },
-          { name: 'Comunidad',     desc: 'un espacio de pertenencia y respeto' },
+          { name: 'Compromiso', desc: 'con cada alumno y su proceso individual' },
+          { name: 'Excelencia', desc: 'en la enseñanza y en las instalaciones' },
+          { name: 'Comunidad', desc: 'un espacio de pertenencia y respeto' },
         ].map(v => (
           <li className="mission__value-item" key={v.name}>
             <span className="mission__value-dot" />
@@ -87,23 +88,51 @@ const ITEMS = [
   },
 ]
 
-const Mission = () => (
-  <section className='mission-container' id="mision">
-    <div className='SECTION-STANDAR '>
-      <div className='CONTAINER-STANDAR '>
-        <article className="mission" >
-          {ITEMS.map((item) => (
-            <div className="mission__item" key={item.num}>
-              <span className="mission__num">{item.num}</span>
-              <div className="mission__icon">{item.icon}</div>
-              <div className="mission__title">{item.title}</div>
-              {item.content}
-            </div>
-          ))}
-        </article>
+const Mission = () => {
+  const misionRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false) // Estado para la animación
+
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Si el elemento entra en pantalla, activamos la animación
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Opcional: dejar de observar una vez que ya se vio
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.2, // Se activa cuando el 20% de la sección es visible
+      }
+    );
+
+    if (misionRef.current) {
+      observer.observe(misionRef.current);
+    }
+
+    return () => observer.disconnect(); // Limpieza al desmontar
+  }, []);
+
+  return (
+    <section className='mission-container' id="mision">
+      <div className='SECTION-STANDAR '>
+        <div className='CONTAINER-STANDAR '>
+          <article className={`mission ${isVisible ? '--visible' : ''}`} ref={misionRef}>
+            {ITEMS.map((item) => (
+              <div className="mission__item" key={item.num} >
+                <span className="mission__num">{item.num}</span>
+                <div className="mission__icon">{item.icon}</div>
+                <div className="mission__title">{item.title}</div>
+                <div className='mission__info'>{item.content}</div>
+              </div>
+            ))}
+          </article>
+        </div>
       </div>
-    </div> 
-  </section>
-)
+    </section>
+  )
+}
 
 export default Mission

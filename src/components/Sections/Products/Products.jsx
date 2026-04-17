@@ -54,11 +54,40 @@ const Products = () => {
     wrapRef.current.scrollBy({ left: dir * amount, behavior: 'smooth' })
   }
 
+//____ Animaciones del pricipio ____________________
+
+
+  const productsRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false) // Estado para la animación
+
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Si el elemento entra en pantalla, activamos la animación
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Opcional: dejar de observar una vez que ya se vio
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.2, // Se activa cuando el 20% de la sección es visible
+      }
+    );
+
+    if (productsRef.current) {
+      observer.observe(productsRef.current);
+    }
+
+    return () => observer.disconnect(); // Limpieza al desmontar
+  }, []);
+
   return (
     <section className="products" id="productos">
       <div className="SECTION-STANDAR">
         <div className="CONTAINER-STANDAR">
-          <div className="container-products">
+          <div className={`container-products ${isVisible ? '--visible' : ''}`} ref={productsRef}>
 
             <article className="products__header">
               <div className="products__arrows">

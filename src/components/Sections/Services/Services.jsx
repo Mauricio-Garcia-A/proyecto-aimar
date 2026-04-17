@@ -2,7 +2,7 @@ import './Services.scss'
 import BgTopServices from './bg-top-services'
 import { IconFuncional1, IconMasajes1, IconMusculacion1, IconPersonalizado1 } from '../../Icons/IconsServicios'
 import BgBottomServices from './bg-bottom-services'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const SERVICES = [
   {
@@ -55,7 +55,7 @@ const FlipCard = ({ icon, name, desc, backTitle, backDesc }) => {
         <div className="service-card__front">
           <span className="service-card__badge">
             <svg viewBox="0 0 12 12" fill="none">
-              <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+              <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
             </svg>
             ver más
           </span>
@@ -80,6 +80,32 @@ const FlipCard = ({ icon, name, desc, backTitle, backDesc }) => {
 }
 
 export default function Services() {
+  const servicesRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false) // Estado para la animación
+
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Si el elemento entra en pantalla, activamos la animación
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Opcional: dejar de observar una vez que ya se vio
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.2, // Se activa cuando el 20% de la sección es visible
+      }
+    );
+
+    if (servicesRef.current) {
+      observer.observe(servicesRef.current);
+    }
+
+    return () => observer.disconnect(); // Limpieza al desmontar
+  }, []);
+
 
   return (
     <section className="services" id="servicios">
@@ -90,7 +116,7 @@ export default function Services() {
 
       <div className='SECTION-STANDAR '>
         <div className='CONTAINER-STANDAR '>
-          <article className='container-services'>
+          <article className={`container-services ${isVisible ? '--visible' : ''}`} ref={servicesRef}>
             <div className="services__header">
               <p className="services__label">Lo que ofrecemos</p>
               <h2 className="services__title">
@@ -101,7 +127,7 @@ export default function Services() {
 
             <div className="services__grid">
               {SERVICES.map((service, i) => (
-                  <FlipCard key={'card-service-key-' + i} {...service} />
+                <FlipCard key={'card-service-key-' + i} {...service} />
               ))}
             </div>
           </article>

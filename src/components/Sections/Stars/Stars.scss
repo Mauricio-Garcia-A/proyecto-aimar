@@ -7,11 +7,9 @@
 }
 
 .stars {
-  
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 5rem 5%;
-  
 
   &__item {
     display: flex;
@@ -32,6 +30,8 @@
     line-height: 1;
     color: $gold;
     text-shadow: 0 0 30px rgba($gold, 0.3);
+    // Un toque de suavidad mientras cuenta
+    font-variant-numeric: tabular-nums; 
   }
 
   &__label {

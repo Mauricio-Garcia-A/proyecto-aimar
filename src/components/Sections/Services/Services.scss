@@ -13,6 +13,21 @@
     z-index: 1;
     padding: 7rem 5%;
 
+    // Stagger animations on mount
+      &.--visible {
+        .services__label {
+          animation: fadeUp 2s 0.5s forwards;
+        }
+
+        .services__title {
+          animation: fadeUp 2s 0.8s forwards;
+        }
+
+        .services__grid {
+          animation: fadeUp 2s 1s forwards;
+        }
+      }
+
   }
 
   .bg-services {
@@ -37,6 +52,7 @@
       transform: rotate(180deg);
     }
 
+    
 
   }
 
@@ -64,6 +80,8 @@
     text-transform: uppercase;
     color: $gold;
     margin-bottom: 1rem;
+
+    opacity: 0;
   }
 
   &__title {
@@ -72,6 +90,8 @@
     line-height: 1;
     letter-spacing: 0.03em;
     color: $white;
+
+    opacity: 0;
   }
 
 // ── Grid ──────────────────────────────────────────────
@@ -80,6 +100,8 @@
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5px;
     background: rgba($gold, 0.1);
+
+    opacity: 0;
   }
 
   @media (max-width: 768px) {
@@ -245,5 +267,17 @@
     transition: color 0.2s;
 
     &:hover { color: rgba($black, 0.6); }
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

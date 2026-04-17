@@ -1,4 +1,5 @@
-import { useState } from 'react'
+/* eslint-disable react/prop-types */
+import { useEffect, useRef, useState } from 'react'
 import './Schedule.scss'
 import BgBottomServices from '../Services/bg-bottom-services'
 import BgTopServices from '../Services/bg-top-services'
@@ -24,6 +25,7 @@ const FILTERS = [
   ...CLASSES.map(c => ({ label: c.name, key: c.key, active: c.active })),
 ]
 
+// eslint-disable-next-line react/prop-types
 const FilterBtn = ({ f, activeFilter, onSelect }) => (
   <button
     className={[
@@ -39,9 +41,39 @@ const FilterBtn = ({ f, activeFilter, onSelect }) => (
   </button>
 )
 
+
 const Schedule = () => {
   const [activeDay, setActiveDay] = useState(0)
   const [activeFilter, setActiveFilter] = useState('all')
+
+//____ Animaciones del pricipio ____________________
+    const horariosRef = useRef(null)
+    const [isVisible, setIsVisible] = useState(false) // Estado para la animación
+  
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          // Si el elemento entra en pantalla, activamos la animación
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            // Opcional: dejar de observar una vez que ya se vio
+            observer.unobserve(entry.target);
+          }
+        },
+        {
+          threshold: 0.2, // Se activa cuando el 20% de la sección es visible
+        }
+      );
+  
+      if (horariosRef.current) {
+        observer.observe(horariosRef.current);
+      }
+  
+      return () => observer.disconnect(); // Limpieza al desmontar
+    }, []);
+    //___________________________________________________
+
 
   const filteredClasses = activeFilter === 'all'
     ? CLASSES.filter(c => c.active)
@@ -52,6 +84,9 @@ const Schedule = () => {
       .filter(c => c.days.includes(dayIdx))
       .sort((a, b) => a.time.localeCompare(b.time))
 
+
+
+  
   return (
     <section className='container-horarios' id="horarios">
       <div className='bg-horarios'>
@@ -61,7 +96,7 @@ const Schedule = () => {
 
       <div className='SECTION-STANDAR '>
         <div className='CONTAINER-STANDAR '>
-          <div className="schedule">
+          <div className={`schedule ${isVisible ? '--visible' : ''}`} ref={horariosRef}>
             <article>
               {/* ── Header ── */}
               <div className="schedule__header">
@@ -126,7 +161,7 @@ const Schedule = () => {
               </div>
             </article>
 
-            <article>
+            <article className='container-horarios-clases'>
               {/* ── Grilla desktop ── */}
               <div className="schedule__filters-wrap">
                 <span className="schedule__grid-title">Grilla semanal</span>
@@ -242,12 +277,6 @@ const Schedule = () => {
 
         </div>
       </div>
-
-
-
-
-
-
     </section>
   )
 }

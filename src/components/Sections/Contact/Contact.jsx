@@ -1,4 +1,5 @@
 import './Contact.scss'
+import { useEffect, useRef, useState } from 'react';
 
 import { IconFacebook, IconInstagram, IconTiktok, IconYoutube } from '../../Icons/IconsRedesSociales';
 import { IconWhatsapp, IconTelefono, IconLocation } from '../../Icons/Icons';
@@ -44,18 +45,48 @@ const CONTACT_ITEMS = [
   },
 ]
 const CONTACT_ITEM_LOCATION = {
-    icon: <IconLocation />,
-    label: 'Direccion',
-    value: 'Av. 1 Nº 1362 esq. 60, La Plata',
-    href: '#',
-  }
+  icon: <IconLocation />,
+  label: 'Direccion',
+  value: 'Av. 1 Nº 1362 esq. 60, La Plata',
+  href: '#',
+}
 
-const Contact = () => (
+
+
+const Contact = () => {
+  //___ Animaciones del inicios__________________
+  const aboutRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false) // Estado para la animación
+
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Si el elemento entra en pantalla, activamos la animación
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Opcional: dejar de observar una vez que ya se vio
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.2, // Se activa cuando el 20% de la sección es visible
+      }
+    );
+
+    if (aboutRef.current) {
+      observer.observe(aboutRef.current);
+    }
+
+    return () => observer.disconnect(); // Limpieza al desmontar
+  }, []);
+
+  return(
   <section className="container-contact" id="contacto">
 
     <div className='SECTION-STANDAR '>
       <div className='CONTAINER-STANDAR '>
-        <article className="contact" >
+        <article className={`contact ${isVisible ? '--visible' : ''}`} ref={aboutRef}>
           <div className="contact__header">
             <p className="contact__label">Encontranos</p>
             <h2 className="contact__title">Contacto</h2>
@@ -77,10 +108,10 @@ const Contact = () => (
 
             <div className="contact__map">
               <div className="contact__item">
-                <div className="contact__icon">{CONTACT_ITEM_LOCATION .icon}</div>
+                <div className="contact__icon">{CONTACT_ITEM_LOCATION.icon}</div>
                 <div className="contact__info">
-                  <span className="contact__info-label">{CONTACT_ITEM_LOCATION .label}</span>
-                  <a href={CONTACT_ITEM_LOCATION .href} className='contact__info-value'>{CONTACT_ITEM_LOCATION .value}</a>
+                  <span className="contact__info-label">{CONTACT_ITEM_LOCATION.label}</span>
+                  <a href={CONTACT_ITEM_LOCATION.href} className='contact__info-value'>{CONTACT_ITEM_LOCATION.value}</a>
                 </div>
               </div>
               <ContactMap />
@@ -96,5 +127,5 @@ const Contact = () => (
 
   </section>
 )
-
+}
 export default Contact
